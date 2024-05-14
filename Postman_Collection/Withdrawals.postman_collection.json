@@ -1,0 +1,1725 @@
+{
+	"info": {
+		"_postman_id": "2fef9650-86c5-40bf-9d1a-382b4522a19e",
+		"name": "Withdrawals",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18247996"
+	},
+	"item": [
+		{
+			"name": "Вывод Binopay2",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"connection": true,
+					"content-type": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{auth_key}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization-Token",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "User-Agent",
+						"value": "{{user_agent}}",
+						"type": "text"
+					},
+					{
+						"key": "Device-Id",
+						"value": "{{device_id}}",
+						"type": "text"
+					},
+					{
+						"key": "Device-Type",
+						"value": "{{device_type}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=UTF-8",
+						"type": "text"
+					},
+					{
+						"key": "userId",
+						"value": "{{userId}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"amount\": 10,\n    \"binopay2_delay\": \"no_delay\",\n    \"binopay2_status\": \"success\",\n    \"card_number\": \"1111222233334444\",\n    \"comments_payout\": \"profits\",\n    \"comments_text\": \"\",\n    \"purse\": {{purse}}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/platform/private/payouts?locale={{locale}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"platform",
+						"private",
+						"payouts"
+					],
+					"query": [
+						{
+							"key": "locale",
+							"value": "{{locale}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Блокировка вывода по стране Binopay2 FK",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"connection": true,
+					"content-type": true,
+					"accept-encoding": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{auth_key}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization-Token",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "User-Agent",
+						"value": "{{user_agent}}",
+						"type": "text"
+					},
+					{
+						"key": "Device-Id",
+						"value": "{{device_id}}",
+						"type": "text"
+					},
+					{
+						"key": "Device-Type",
+						"value": "{{device_type}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=UTF-8",
+						"type": "text"
+					},
+					{
+						"key": "userId",
+						"value": "{{userId}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"amount\": 10,\n    \"binopay2_delay\": \"no_delay\",\n    \"binopay2_status\": \"success\",\n    \"card_number\": \"1111222233334444\",\n    \"comments_payout\": \"profits\",\n    \"comments_text\": \"\",\n    \"purse\": {{purse}}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/platform/private/payouts",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"platform",
+						"private",
+						"payouts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Вытащить из вывода transaction_id",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"transaction_id\", jsonData.data.items[0].transaction_id);",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"connection": true,
+					"content-type": true
+				},
+				"followOriginalHttpMethod": true,
+				"followAuthorizationHeader": true,
+				"maxRedirects": 12
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{auth_key}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization-Token",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.109 Safari/537.36",
+						"type": "text"
+					},
+					{
+						"key": "Device-Id",
+						"value": "{{device_id}}",
+						"type": "text"
+					},
+					{
+						"key": "Device-Type",
+						"value": "{{device_type}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=UTF-8",
+						"type": "text"
+					},
+					{
+						"key": "userId",
+						"value": "{{userId}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/platform/private/transactions?per=10&locale=en&type=withdraw",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"platform",
+						"private",
+						"transactions"
+					],
+					"query": [
+						{
+							"key": "per",
+							"value": "10"
+						},
+						{
+							"key": "locale",
+							"value": "en"
+						},
+						{
+							"key": "type",
+							"value": "withdraw"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Выгрузка всех пурсов пользователя и запись Binopay2 в энв",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"purse\", jsonData.data.find(subItem => subItem.display_name === \"VISA / MASTERCARD / MAESTRO!!\")?.id);",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true,
+					"user-agent": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{auth_key}}",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization-Token",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "User-Agent",
+						"value": "{{user_agent}}",
+						"type": "text"
+					},
+					{
+						"key": "Device-Id",
+						"value": "{{device_id}}",
+						"type": "text"
+					},
+					{
+						"key": "Device-Type",
+						"value": "{{device_type}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{BASE_URL}}/platform/private/payouts/purses",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"platform",
+						"private",
+						"payouts",
+						"purses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Вход в CRM для подтверждения вывода",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"{{email_crm}}\",\n  \"password\": \"{{password_crm}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{crm_url}}/login",
+					"host": [
+						"{{crm_url}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pay в выводе с автор и входом в crm",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 278\", function () {",
+							"    pm.response.to.have.status(278);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const postData = async (url = 'https://crm.bill-01234-qa.sbinomo.com/api/v1/sign_in', data = {",
+							"  \"email\": \"admin@binomo.loc\",",
+							"  \"password\": \"qwe123\"",
+							"}) => {const response = await fetch(url, {",
+							"    method: 'POST',",
+							"    headers: {",
+							"      'Content-Type': 'application/json;charset=UTF-8',",
+							"      'Device-Type': 'web',",
+							"      'Device-Id': 'f6f0b7960e81649fd64112ff62c729fc',",
+							"      'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.109 Safari/537.36'",
+							"    },",
+							"    body: JSON.stringify(data)",
+							"  });",
+							"  return response.json(); ",
+							"}",
+							"",
+							"const postData1 = async (url = 'https://crm.bill-01234-qa.sbinomo.com/login', data = {",
+							"  \"email\": \"admin@binomo.loc\",",
+							"  \"password\": \"qwe123\"",
+							"}) => {const response = await fetch(url, {",
+							"    method: 'POST',",
+							"    headers: {",
+							"      'Content-Type': 'application/json;charset=UTF-8',",
+							"      'Device-Type': 'web',",
+							"      'Device-Id': 'f6f0b7960e81649fd64112ff62c729fc',",
+							"      'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.109 Safari/537.36'",
+							"    },",
+							"    body: JSON.stringify(data)",
+							"  });",
+							"  return response.json(); ",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept-encoding": true,
+					"accept": true,
+					"user-agent": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{auth_key_crm}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "crm_authz_token",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Device-Id",
+						"value": "{{device_id}}",
+						"type": "text"
+					},
+					{
+						"key": "Device-Type",
+						"value": "{{device_type}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded; charset=UTF-8",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "*/*;q=0.5, text/javascript, application/javascript, application/ecmascript, application/x-ecmascript",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Encoding",
+						"value": "gzip, deflate, br",
+						"type": "text"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",
+						"type": "text"
+					},
+					{
+						"key": "X-Csrf-Token",
+						"value": "aBlpCRt854PAEcGCkIfXBPuvimySD4rzIlfaFO5KDBLAQi9Mtfp3z32Aa14koIbFaIYfSLSy+nUde3Jj8zB9+w==",
+						"type": "text"
+					},
+					{
+						"key": "X-Requested-With",
+						"value": "XMLHttpRequest",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "utf8=%E2%9C%93&_method=patch&_action=approve&_delay=0&reason=no&comment=&manual_provider=manual_pay&delayed_to=",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{crm_url}}/orders/{{transaction_id}}",
+					"host": [
+						"{{crm_url}}"
+					],
+					"path": [
+						"orders",
+						"{{transaction_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pay в выводе PayOk",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 278\", function () {",
+							"    pm.response.to.have.status(278);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept-encoding": true,
+					"accept": true,
+					"user-agent": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{auth_key_crm}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "crm_authz_token",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Device-Id",
+						"value": "{{device_id}}",
+						"type": "text"
+					},
+					{
+						"key": "Device-Type",
+						"value": "{{device_type}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded; charset=UTF-8",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "*/*;q=0.5, text/javascript, application/javascript, application/ecmascript, application/x-ecmascript",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Encoding",
+						"value": "gzip, deflate, br",
+						"type": "text"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",
+						"type": "text"
+					},
+					{
+						"key": "X-Csrf-Token",
+						"value": "aBlpCRt854PAEcGCkIfXBPuvimySD4rzIlfaFO5KDBLAQi9Mtfp3z32Aa14koIbFaIYfSLSy+nUde3Jj8zB9+w==",
+						"type": "text"
+					},
+					{
+						"key": "X-Requested-With",
+						"value": "XMLHttpRequest",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "utf8=%E2%9C%93&_method=patch&_action=approve&_delay=0&reason=no&fraud_reason=&comment=&manual_provider=manual_pay&delayed_to=",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{crm_url}}/orders/{{transaction_id}}",
+					"host": [
+						"{{crm_url}}"
+					],
+					"path": [
+						"orders",
+						"{{transaction_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Проверка наличия ордера в CRM",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {
+					"accept-encoding": true,
+					"accept": true,
+					"user-agent": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{auth_key_crm}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "crm_authz_token",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Device-Id",
+						"value": "{{device_id}}",
+						"type": "text"
+					},
+					{
+						"key": "Device-Type",
+						"value": "{{device_type}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded; charset=UTF-8",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Accept",
+						"value": "*/*;q=0.5, text/javascript, application/javascript, application/ecmascript, application/x-ecmascript",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Accept-Encoding",
+						"value": "gzip, deflate, br",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",
+						"type": "text"
+					},
+					{
+						"key": "X-Csrf-Token",
+						"value": "aBlpCRt854PAEcGCkIfXBPuvimySD4rzIlfaFO5KDBLAQi9Mtfp3z32Aa14koIbFaIYfSLSy+nUde3Jj8zB9+w==",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "X-Requested-With",
+						"value": "XMLHttpRequest",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{crm_url}}/orders/{{transaction_id}}",
+					"host": [
+						"{{crm_url}}"
+					],
+					"path": [
+						"orders",
+						"{{transaction_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reject вывода",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 278\", function () {",
+							"    pm.response.to.have.status(278);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"connection": true,
+					"accept-encoding": true,
+					"accept": true,
+					"user-agent": true,
+					"content-type": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "{{auth_key_crm}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization-Token",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*;q=0.5, text/javascript, application/javascript, application/ecmascript, application/x-ecmascript"
+					},
+					{
+						"key": "user-agent",
+						"value": "{{user_agent}}"
+					},
+					{
+						"key": "x-requested-with",
+						"value": "XMLHttpRequest"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "utf8=%E2%9C%93&_method=patch&_action=reject&_delay=0&reason=limits&fraud_reason=&comment=&manual_provider=manual_pay&delayed_to="
+				},
+				"url": {
+					"raw": "{{crm_url}}/orders/{{transaction_id}}",
+					"host": [
+						"{{crm_url}}"
+					],
+					"path": [
+						"orders",
+						"{{transaction_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Транзакция",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"connection": true,
+					"content-type": true
+				},
+				"followOriginalHttpMethod": true,
+				"followAuthorizationHeader": true,
+				"maxRedirects": 12
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{auth_key}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization-Token",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.109 Safari/537.36",
+						"type": "text"
+					},
+					{
+						"key": "Device-Id",
+						"value": "{{device_id}}",
+						"type": "text"
+					},
+					{
+						"key": "Device-Type",
+						"value": "{{device_type}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=UTF-8",
+						"type": "text"
+					},
+					{
+						"key": "userId",
+						"value": "{{userId}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/platform/private/transactions/{{transaction_id}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"platform",
+						"private",
+						"transactions",
+						"{{transaction_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Вывод на Uz Local Card Payout",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"user-agent": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{auth_key}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization-Token",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json"
+					},
+					{
+						"key": "cookie",
+						"value": "_gcl_au=1.1.1193279494.1707403082; _fbp=fb.1.1707403082870.1421453797; __exponea_time2__=0.37111401557922363; _gid=GA1.2.1148907653.1708329881; __exponea_etc__=e75c70fa-36e7-4d1b-8815-e96b12db4df0; _ga_EYQ8E8SVJX=GS1.1.1708330424.12.0.1708330668.0.0.0; _dc_gtm_UA-60335261-1=1; authtoken=994a3610-0b21-4a93-994f-037bc0d6dda1; device_type=web; device_id=9da2615fbb2fe6e5e404cb066158f30b; _ga_6TNVMCB3BC=GS1.1.1708329880.22.1.1708330751.37.0.0; _ga=GA1.2.324710283.1707403083"
+					},
+					{
+						"key": "device-id",
+						"value": "{{device_id}}"
+					},
+					{
+						"key": "device-type",
+						"value": "{{device_type}}"
+					},
+					{
+						"key": "user-agent",
+						"value": "{{user_agent}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"amount\": \"10\",\n    \"card_number\": \"4314220000000056\",\n    \"last_name\": \"Smith\",\n    \"first_name\": \"John\",\n    \"purse\": {{purse}},\n    \"comments_payout\": \"profits\",\n    \"comments_text\": \"\"\n}"
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/platform/private/payouts?{{locale}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"platform",
+						"private",
+						"payouts"
+					],
+					"query": [
+						{
+							"key": "{{locale}}",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Повторный Вывод на Uz Local Card Payout",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"user-agent": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{auth_key}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization-Token",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json"
+					},
+					{
+						"key": "cookie",
+						"value": "_gcl_au=1.1.1193279494.1707403082; _fbp=fb.1.1707403082870.1421453797; __exponea_time2__=0.37111401557922363; _gid=GA1.2.1148907653.1708329881; __exponea_etc__=e75c70fa-36e7-4d1b-8815-e96b12db4df0; _ga_EYQ8E8SVJX=GS1.1.1708330424.12.0.1708330668.0.0.0; _dc_gtm_UA-60335261-1=1; authtoken=994a3610-0b21-4a93-994f-037bc0d6dda1; device_type=web; device_id=9da2615fbb2fe6e5e404cb066158f30b; _ga_6TNVMCB3BC=GS1.1.1708329880.22.1.1708330751.37.0.0; _ga=GA1.2.324710283.1707403083"
+					},
+					{
+						"key": "device-id",
+						"value": "{{device_id}}"
+					},
+					{
+						"key": "device-type",
+						"value": "{{device_type}}"
+					},
+					{
+						"key": "user-agent",
+						"value": "{{user_agent}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"amount\": \"10\",\n    \"purse\": {{purse}},\n    \"comments_payout\": \"profits\",\n    \"comments_text\": \"\"\n}"
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/platform/private/payouts",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"platform",
+						"private",
+						"payouts"
+					],
+					"query": [
+						{
+							"key": "{{locale}}",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Депозит для блокировки вывода по стране Binopay2 FK",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"dep_transaction_id\", jsonData.data.guid);",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"connection": true,
+					"content-type": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{auth_key}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization-Token",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.109 Safari/537.36",
+						"type": "text"
+					},
+					{
+						"key": "Device-Id",
+						"value": "{{device_id}}",
+						"type": "text"
+					},
+					{
+						"key": "Device-Type",
+						"value": "{{device_type}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=UTF-8",
+						"type": "text"
+					},
+					{
+						"key": "userId",
+						"value": "{{userId}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"amount\": 10,\n\"binopay2_delay\": \"no_delay\",\n\"binopay2_status\": \"success\",\n\"bonus\": \"none\",\n\"card_number\": \"1111222233334444\",\n\"country_iso\": \"{{iso_block_with}}\",\n\"coupon_code\": \"\",\n\"get_bonus\": false,\n\"get_coupon\": false,\n\"handler\": \"card\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/platform/private/payments",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"platform",
+						"private",
+						"payments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Добавить фиче флаг",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{auth_key}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization-Token",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "device-id",
+						"value": "{{device_id}}"
+					},
+					{
+						"key": "device-type",
+						"value": "{{device_type}}"
+					},
+					{
+						"key": "user-agent",
+						"value": "{{user_agent}}"
+					}
+				],
+				"url": {
+					"raw": "{{BASE_URL}}/platform/private/payouts/purses?flags=:block_our_ip",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"platform",
+						"private",
+						"payouts",
+						"purses"
+					],
+					"query": [
+						{
+							"key": "flags",
+							"value": ":block_our_ip"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Вывод на PayOk через LocalBankColombia",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept": true,
+					"connection": true,
+					"accept-encoding": true,
+					"content-type": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{auth_key}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization-Token",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json, text/plain, */*",
+						"disabled": true
+					},
+					{
+						"key": "content-type",
+						"value": "application/json"
+					},
+					{
+						"key": "device-id",
+						"value": "{{device_id}}"
+					},
+					{
+						"key": "device-type",
+						"value": "{{device_type}}"
+					},
+					{
+						"key": "User-Agent",
+						"value": "{{user_agent}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"amount\": \"2\",\n    \"bank_code\": \"3019\",\n    \"account_type\": \"0\",\n    \"document_type\": \"CC\",\n    \"personal_id\": \"12345678\",\n    \"phone\": \"+57 3185511274\",\n    \"account_number\": \"1234567890\",\n    \"last_name\": \"Smith\",\n    \"first_name\": \"John\",\n    \"purse\": 65133,\n    \"comments_payout\": \"profits\",\n    \"comments_text\": \"\"\n}"
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/platform/private/payouts?locale={{locale}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"platform",
+						"private",
+						"payouts"
+					],
+					"query": [
+						{
+							"key": "locale",
+							"value": "{{locale}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Вывод на PayOk через LocalBankColombia сокр",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept": true,
+					"connection": true,
+					"accept-encoding": true,
+					"content-type": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{auth_key}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization-Token",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json, text/plain, */*",
+						"disabled": true
+					},
+					{
+						"key": "content-type",
+						"value": "application/json"
+					},
+					{
+						"key": "device-id",
+						"value": "{{device_id}}"
+					},
+					{
+						"key": "device-type",
+						"value": "{{device_type}}"
+					},
+					{
+						"key": "User-Agent",
+						"value": "{{user_agent}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"amount\": \"10\",\n    \"purse\": 65133,\n    \"comments_payout\": \"profits\",\n    \"comments_text\": \"\"\n}"
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/platform/private/payouts?locale={{locale}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"platform",
+						"private",
+						"payouts"
+					],
+					"query": [
+						{
+							"key": "locale",
+							"value": "{{locale}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Блокировка вывода по пользователю",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"user-agent": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "crm_authz_token",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "{{auth_key_crm}}",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*;q=0.5, text/javascript, application/javascript, application/ecmascript, application/x-ecmascript"
+					},
+					{
+						"key": "content-type",
+						"value": "application/x-www-form-urlencoded; charset=UTF-8"
+					},
+					{
+						"key": "user-agent",
+						"value": "{{user_agent}}"
+					},
+					{
+						"key": "Device-Id",
+						"value": "{{device_id}}",
+						"type": "text"
+					},
+					{
+						"key": "Device-Type",
+						"value": "{{device_type}}",
+						"type": "text"
+					},
+					{
+						"key": "X-Requested-With",
+						"value": "XMLHttpRequest",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "utf8=%E2%9C%93&user_blocking_setting%5Btrading%5D=0&user_blocking_setting%5Bsupport%5D=0&user_blocking_setting%5Bdeposit%5D=0&user_blocking_setting%5Bdeposit%5D=0&user_blocking_setting%5Bwithdraw%5D=1&commit=Create+User+blocking+setting"
+				},
+				"url": {
+					"raw": "{{crm_url}}/users/{{userId}}/blocking_settings",
+					"host": [
+						"{{crm_url}}"
+					],
+					"path": [
+						"users",
+						"{{userId}}",
+						"blocking_settings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Отмена вывода пользователем",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{auth_key}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization-Token",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "accept-language",
+						"value": "ru,en;q=0.9,hi;q=0.8"
+					},
+					{
+						"key": "device-id",
+						"value": "3d89b3672fae7125902994374ae93a7d"
+					},
+					{
+						"key": "device-type",
+						"value": "web"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-site"
+					},
+					{
+						"key": "user-agent",
+						"value": "{{user_agent}}"
+					}
+				],
+				"url": {
+					"raw": "{{BASE_URL}}/platform/private/payouts/78715?locale=en",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"platform",
+						"private",
+						"payouts",
+						"78715"
+					],
+					"query": [
+						{
+							"key": "locale",
+							"value": "en"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,500 @@
+{
+	"info": {
+		"_postman_id": "94acf65f-f083-4b9b-b1d1-d00a6091a3de",
+		"name": "Регистрация и авторизация",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18247996"
+	},
+	"item": [
+		{
+			"name": "Регистрация)",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"postman.setEnvironmentVariable(\"email\", \"sobaka01@gmail.com\");"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"auth_key\", jsonData.data.authtoken);",
+							"postman.setEnvironmentVariable(\"userId\", jsonData.data.user_id);",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"user-agent": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Device-Id",
+						"value": "{{device_id}}"
+					},
+					{
+						"key": "Device-Type",
+						"value": "{{device_type}}"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"track_token\": \"{{track_token}}\",\n  \"email\": \"{{email}}\",\n  \"password\": \"Qwerty123\",\n  \"i_agree\": true,\n  \"currency\": \"USD\",\n  \"protection\": {\n\n    }\n  }\n}"
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/passport/v1/sign_up?locale={{locale}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"passport",
+						"v1",
+						"sign_up"
+					],
+					"query": [
+						{
+							"key": "locale",
+							"value": "{{locale}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Получить track_token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"track_token\", jsonData.data.track_token);",
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true,
+					"user-agent": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Device-Type",
+						"value": "{{device_type}}"
+					},
+					{
+						"key": "Device-Id",
+						"value": "{{device_id}}"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0"
+					},
+					{
+						"key": "X-Forwarded-For",
+						"value": "127.0.0.1,215.123.0.10"
+					}
+				],
+				"url": {
+					"raw": "{{BASE_URL}}/traffic-tracker/v1/track",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"traffic-tracker",
+						"v1",
+						"track"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Запрос верификации",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"user-agent": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{auth_key_crm}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization-Token",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "authority",
+						"value": "api.bill-01234-qa.sbin-admin.com",
+						"disabled": true
+					},
+					{
+						"key": "accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "accept-language",
+						"value": "ru,en;q=0.9,hi;q=0.8",
+						"disabled": true
+					},
+					{
+						"key": "authorization-token",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlX25hbWUiOiJhZG1pbiIsInZhbGlkX3RvIjoxNzEwMzI5NjkzfQ.C3D88HJgjmGfH1fJK_kKMLxEeatNwMocoPwZLHuhq78",
+						"disabled": true
+					},
+					{
+						"key": "cache-control",
+						"value": "no-cache",
+						"disabled": true
+					},
+					{
+						"key": "content-type",
+						"value": "application/json"
+					},
+					{
+						"key": "home_page_geo",
+						"value": "FM",
+						"disabled": true
+					},
+					{
+						"key": "origin",
+						"value": "https://bill-01234-qa.sbin-admin.com",
+						"disabled": true
+					},
+					{
+						"key": "pragma",
+						"value": "no-cache",
+						"disabled": true
+					},
+					{
+						"key": "referer",
+						"value": "https://bill-01234-qa.sbin-admin.com/",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Not_A Brand\";v=\"8\", \"Chromium\";v=\"120\", \"Google Chrome\";v=\"120\"",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"macOS\"",
+						"disabled": true
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty",
+						"disabled": true
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors",
+						"disabled": true
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-site",
+						"disabled": true
+					},
+					{
+						"key": "user-agent",
+						"value": "{{user_agent}}"
+					},
+					{
+						"key": "x-custom-geo",
+						"value": "FM",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{}"
+				},
+				"url": {
+					"raw": "{{bin_admin_url}}/user-verification/v1/traders/{{userId}}/documents",
+					"host": [
+						"{{bin_admin_url}}"
+					],
+					"path": [
+						"user-verification",
+						"v1",
+						"traders",
+						"{{userId}}",
+						"documents"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Верификация документов",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{auth_key_crm}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization-Token",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "User-Agent",
+						"value": "{{user_agent}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{bin_admin_url}}/user-verification/v1/traders/{{userId}}/documents",
+					"host": [
+						"{{bin_admin_url}}"
+					],
+					"path": [
+						"user-verification",
+						"v1",
+						"traders",
+						"{{userId}}",
+						"documents"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Авторизация bin-admin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"auth_key_crm\", jsonData.data.crm_authz_token);",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=UTF-8",
+						"type": "text"
+					},
+					{
+						"key": "User-Agent",
+						"value": "{{user_agent}}",
+						"type": "text"
+					},
+					{
+						"key": "Device-Id",
+						"value": "{{device_id}}",
+						"type": "text"
+					},
+					{
+						"key": "Device-Type",
+						"value": "{{device_type}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"{{email_crm}}\",\n  \"password\": \"{{password_crm}}\"\n}"
+				},
+				"url": {
+					"raw": "{{crm_url}}/api/v1/sign_in",
+					"host": [
+						"{{crm_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"sign_in"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Авторизация Binomo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"auth_key\", jsonData.data.authtoken);",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=UTF-8",
+						"type": "text"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.109 Safari/537.36",
+						"type": "text"
+					},
+					{
+						"key": "Device-Id",
+						"value": "{{device_id}}",
+						"type": "text"
+					},
+					{
+						"key": "Device-Type",
+						"value": "{{device_type}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\"\n}"
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/passport/v2/sign_in?locale={{locale}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"passport",
+						"v2",
+						"sign_in"
+					],
+					"query": [
+						{
+							"key": "locale",
+							"value": "{{locale}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

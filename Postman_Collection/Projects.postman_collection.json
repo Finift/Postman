@@ -1,0 +1,431 @@
+{
+	"info": {
+		"_postman_id": "cdca628b-e680-4b21-ab50-17ba4f9ad977",
+		"name": "Projects",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18247996"
+	},
+	"item": [
+		{
+			"name": "Список всех проектов кассы",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true,
+					"user-agent": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlX25hbWUiOiJhZG1pbiIsInZhbGlkX3RvIjoxNzE2MjkwNzAzfQ.5IRzdNdCbrOQibB7JmAJA2pFE9VWpxsF2mnFaW844TQ",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization-Token",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "User-Agent",
+						"value": "{{user_agent}}",
+						"type": "text"
+					},
+					{
+						"key": "Device-Id",
+						"value": "{{device_id}}",
+						"type": "text"
+					},
+					{
+						"key": "Device-Type",
+						"value": "{{device_type}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.bill-01234-qa.sbin-admin.com/api/crm/v1/cashier/projects?locale=en",
+					"protocol": "https",
+					"host": [
+						"api",
+						"bill-01234-qa",
+						"sbin-admin",
+						"com"
+					],
+					"path": [
+						"api",
+						"crm",
+						"v1",
+						"cashier",
+						"projects"
+					],
+					"query": [
+						{
+							"key": "locale",
+							"value": "en"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Смена статуса проекта",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlX25hbWUiOiJhZG1pbiIsInZhbGlkX3RvIjoxNzE2MjkwNzAzfQ.5IRzdNdCbrOQibB7JmAJA2pFE9VWpxsF2mnFaW844TQ",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization-Token",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "authority",
+						"value": "api.bill-01234-qa.sbin-admin.com",
+						"disabled": true
+					},
+					{
+						"key": "accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "accept-language",
+						"value": "ru,en;q=0.9,hi;q=0.8",
+						"disabled": true
+					},
+					{
+						"key": "authorization-token",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlX25hbWUiOiJhZG1pbiIsInZhbGlkX3RvIjoxNzA4MDc4MTkxfQ.xVwd0okF86qayo0NmjL0kU7XdmBBZbEpiyqzngrcyeU"
+					},
+					{
+						"key": "cache-control",
+						"value": "no-cache"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json"
+					},
+					{
+						"key": "home_page_geo",
+						"value": "NG",
+						"disabled": true
+					},
+					{
+						"key": "origin",
+						"value": "https://bill-01234-qa.sbin-admin.com",
+						"disabled": true
+					},
+					{
+						"key": "pragma",
+						"value": "no-cache",
+						"disabled": true
+					},
+					{
+						"key": "referer",
+						"value": "https://bill-01234-qa.sbin-admin.com/",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Google Chrome\";v=\"119\", \"Chromium\";v=\"119\", \"Not?A_Brand\";v=\"24\"",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"macOS\"",
+						"disabled": true
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty",
+						"disabled": true
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors",
+						"disabled": true
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-site",
+						"disabled": true
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36"
+					},
+					{
+						"key": "x-custom-geo",
+						"value": "NG",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"ready_to_use\":true}"
+				},
+				"url": {
+					"raw": "https://api.bill-01234-qa.sbin-admin.com/api/crm/v1/cashier/projects/binomo",
+					"protocol": "https",
+					"host": [
+						"api",
+						"bill-01234-qa",
+						"sbin-admin",
+						"com"
+					],
+					"path": [
+						"api",
+						"crm",
+						"v1",
+						"cashier",
+						"projects",
+						"binomo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Информация о статусе проекта",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true,
+					"user-agent": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlX25hbWUiOiJhZG1pbiIsInZhbGlkX3RvIjoxNzE2MjkwNzAzfQ.5IRzdNdCbrOQibB7JmAJA2pFE9VWpxsF2mnFaW844TQ",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization-Token",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "User-Agent",
+						"value": "{{user_agent}}",
+						"type": "text"
+					},
+					{
+						"key": "Device-Id",
+						"value": "{{device_id}}",
+						"type": "text"
+					},
+					{
+						"key": "Device-Type",
+						"value": "{{device_type}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.bill-01234-qa.sbin-admin.com/api/crm/v1/cashier/projects/binomo/status?locale=en",
+					"protocol": "https",
+					"host": [
+						"api",
+						"bill-01234-qa",
+						"sbin-admin",
+						"com"
+					],
+					"path": [
+						"api",
+						"crm",
+						"v1",
+						"cashier",
+						"projects",
+						"binomo",
+						"status"
+					],
+					"query": [
+						{
+							"key": "locale",
+							"value": "en"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Health_check готовности проекта к использованию",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true,
+					"user-agent": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlX25hbWUiOiJhZG1pbiIsInZhbGlkX3RvIjoxNzE2MjkwNzAzfQ.5IRzdNdCbrOQibB7JmAJA2pFE9VWpxsF2mnFaW844TQ",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization-Token",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "User-Agent",
+						"value": "{{user_agent}}",
+						"type": "text"
+					},
+					{
+						"key": "Device-Id",
+						"value": "{{device_id}}",
+						"type": "text"
+					},
+					{
+						"key": "Device-Type",
+						"value": "{{device_type}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.bill-01234-qa.sbin-admin.com/api/crm/v1/cashier/projects/binomo/health_check?locale=en",
+					"protocol": "https",
+					"host": [
+						"api",
+						"bill-01234-qa",
+						"sbin-admin",
+						"com"
+					],
+					"path": [
+						"api",
+						"crm",
+						"v1",
+						"cashier",
+						"projects",
+						"binomo",
+						"health_check"
+					],
+					"query": [
+						{
+							"key": "locale",
+							"value": "en"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

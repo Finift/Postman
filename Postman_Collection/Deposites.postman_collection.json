@@ -1,0 +1,995 @@
+{
+	"info": {
+		"_postman_id": "4c4b26fd-7fc4-47a1-8240-fe9f0dacd363",
+		"name": "Deposites",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18247996"
+	},
+	"item": [
+		{
+			"name": "депозит Binopay2",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"dep_transaction_id\", jsonData.data.guid);",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"connection": true,
+					"content-type": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{auth_key}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization-Token",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.109 Safari/537.36"
+					},
+					{
+						"key": "Device-Id",
+						"value": "{{device_id}}"
+					},
+					{
+						"key": "Device-Type",
+						"value": "{{device_type}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=UTF-8"
+					},
+					{
+						"key": "userId",
+						"value": "{{userId}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"amount\": 1000,\n\"binopay2_delay\": \"no_delay\",\n\"binopay2_status\": \"success\",\n\"bonus\": \"\",\n\"card_number\": \"1111222233334444\",\n\"country_iso\": \"{{iso}}\",\n\"coupon_code\": \"\",\n\"get_bonus\": false,\n\"get_coupon\": false,\n\"handler\": \"card\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/platform/private/payments?locale={{locale}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"platform",
+						"private",
+						"payments"
+					],
+					"query": [
+						{
+							"key": "locale",
+							"value": "{{locale}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Блокировка депозита по стране Binopay2",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 422\", function () {",
+							"    pm.response.to.have.status(422);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"connection": true,
+					"content-type": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{auth_key}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization-Token",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.109 Safari/537.36",
+						"type": "text"
+					},
+					{
+						"key": "Device-Id",
+						"value": "{{device_id}}",
+						"type": "text"
+					},
+					{
+						"key": "Device-Type",
+						"value": "{{device_type}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=UTF-8",
+						"type": "text"
+					},
+					{
+						"key": "userId",
+						"value": "{{userId}}",
+						"type": "text"
+					},
+					{
+						"key": "FeatureFlags",
+						"value": ":block_our_ip",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"amount\": 10,\n\"binopay2_delay\": \"no_delay\",\n\"binopay2_status\": \"success\",\n\"bonus\": \"none\",\n\"card_number\": \"1111222233334444\",\n\"country_iso\": \"{{iso_block}}\",\n\"coupon_code\": \"\",\n\"get_bonus\": false,\n\"get_coupon\": false,\n\"handler\": \"card\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/platform/private/payments?locale={{locale}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"platform",
+						"private",
+						"payments"
+					],
+					"query": [
+						{
+							"key": "locale",
+							"value": "{{locale}}"
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Транзакция",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"connection": true,
+					"content-type": true
+				},
+				"followOriginalHttpMethod": true,
+				"followAuthorizationHeader": true,
+				"maxRedirects": 12
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{auth_key}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization-Token",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.109 Safari/537.36",
+						"type": "text"
+					},
+					{
+						"key": "Device-Id",
+						"value": "{{device_id}}",
+						"type": "text"
+					},
+					{
+						"key": "Device-Type",
+						"value": "{{device_type}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=UTF-8",
+						"type": "text"
+					},
+					{
+						"key": "userId",
+						"value": "{{userId}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/platform/private/transactions/{{dep_transaction_id}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"platform",
+						"private",
+						"transactions",
+						"{{dep_transaction_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Вытащить из депозита transaction_id через платформу",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"dep_transaction_id\", jsonData.data.items[0].transaction_id);",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"connection": true,
+					"content-type": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{auth_key}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization-Token",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.109 Safari/537.36",
+						"type": "text"
+					},
+					{
+						"key": "Device-Id",
+						"value": "{{device_id}}",
+						"type": "text"
+					},
+					{
+						"key": "Device-Type",
+						"value": "{{device_type}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=UTF-8",
+						"type": "text"
+					},
+					{
+						"key": "userId",
+						"value": "{{userId}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/platform/private/transactions?per=10&locale=en&type=deposit",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"platform",
+						"private",
+						"transactions"
+					],
+					"query": [
+						{
+							"key": "per",
+							"value": "10"
+						},
+						{
+							"key": "locale",
+							"value": "en"
+						},
+						{
+							"key": "type",
+							"value": "deposit"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Выгрузка ордера из CRM, требует логин",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"connection": true,
+					"accept": true,
+					"user-agent": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "{{auth_key_crm}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization-Token",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "text/html, application/xhtml+xml, application/xml"
+					},
+					{
+						"key": "cookie",
+						"value": "_gcl_au=1.1.2021081869.1703608431; _fbp=fb.1.1703608431704.1240703097; cto_bundle=wFHjr180U0twVXVsWTlWOFl2R1VQZFpwMCUyRmZBRGQ4MVIzMCUyQlhSUmU3VGo5VVQ2Rk9HMmtBV1pPc0lNWWhXJTJGOE4zY2hveTRBcGVSdldneXNFc0ljQVU3dTdWWEJlRXlqT3JKUUxlVFUwQTdoWHJ6YiUyQjN5ZEw4S1Fta1pGMU8zYjdFN3lBWiUyRjNiZE02Ujh5VTZGZlZOQ21BN3VnJTNEJTNE; crm_authz_token=eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlX25hbWUiOiJhZG1pbiIsInZhbGlkX3RvIjoxNzEwMzI5NjkzfQ.C3D88HJgjmGfH1fJK_kKMLxEeatNwMocoPwZLHuhq78; _ga_EYQ8E8SVJX=GS1.1.1704885972.11.1.1704886343.0.0.0; _ga=GA1.1.1378405110.1703608431; _ga_6TNVMCB3BC=GS1.1.1705053186.21.0.1705053186.60.0.0; __exponea_time2__=0.1613781452178955; __exponea_etc__=cec54616-fbf2-412b-bf8e-5faac6a40049; device_type=web; device_id=9da2615fbb2fe6e5e404cb066158f30b; authtoken=ade88900-0e2c-4c85-b6af-7ab52a7c200f; _crm_binomo_com_session=K3J3WmVmVm9ZcEJkMnovVmxqUDNBcVhZRXoxbzA2emJxTGxqaWpPM2hTTXk2dlJwLzFQUGtHUERYOExSOVYxcVRQZHV3RkVuTy9IeFBueUtIWlBwRGhmSzJieDQ3aVNOZzgwMmtSWjVvcFBST0REM0dCb0ozMnRvV2pRQmlPUHZDQ2VQcE1kNG83cHJPVWRMTzBvUlY3Wk1ZekIza25PVllGYmNVS2xGa0ZRS0tYVlVCaUJLeUFUdnhtbUdjekIzLS1WOENXeCtzZWd6RmlEa2tVbTBiK29nPT0%3D--c82cc01dca2ecd3279dc1d0cfadda982158b23e9",
+						"disabled": true
+					},
+					{
+						"key": "user-agent",
+						"value": "{{user_agent}}"
+					}
+				],
+				"url": {
+					"raw": "{{crm_url}}/orders/{{dep_transaction_id}}",
+					"host": [
+						"{{crm_url}}"
+					],
+					"path": [
+						"orders",
+						"{{dep_transaction_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "депозит Binopay2 с депозитным бонусом",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"connection": true,
+					"content-type": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{auth_key}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization-Token",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.109 Safari/537.36",
+						"type": "text"
+					},
+					{
+						"key": "Device-Id",
+						"value": "{{device_id}}",
+						"type": "text"
+					},
+					{
+						"key": "Device-Type",
+						"value": "{{device_type}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=UTF-8",
+						"type": "text"
+					},
+					{
+						"key": "userId",
+						"value": "{{userId}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"amount\": 150,\n\"binopay2_delay\": \"no_delay\",\n\"binopay2_status\": \"success\",\n\"bonus\": \"bonus\",\n\"card_number\": \"1111222233334444\",\n\"country_iso\": \"{{iso}}\",\n\"coupon_code\": \"\",\n\"get_bonus\": true,\n\"get_coupon\": false,\n\"handler\": \"card\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/platform/private/payments?locale={{locale}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"platform",
+						"private",
+						"payments"
+					],
+					"query": [
+						{
+							"key": "locale",
+							"value": "{{locale}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "депозит Binopay2 с депозитным купоном на rft",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"connection": true,
+					"content-type": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{auth_key}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization-Token",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.109 Safari/537.36",
+						"type": "text"
+					},
+					{
+						"key": "Device-Id",
+						"value": "{{device_id}}",
+						"type": "text"
+					},
+					{
+						"key": "Device-Type",
+						"value": "{{device_type}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=UTF-8",
+						"type": "text"
+					},
+					{
+						"key": "userId",
+						"value": "{{userId}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"amount\": 150,\n\"binopay2_delay\": \"no_delay\",\n\"binopay2_status\": \"success\",\n\"bonus\": \"coupon\",\n\"card_number\": \"1111222233334444\",\n\"country_iso\": \"{{iso}}\",\n\"coupon_code\": \"cid000001l\",\n\"get_bonus\": false,\n\"get_coupon\": true,\n\"handler\": \"card\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/platform/private/payments?locale={{locale}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"platform",
+						"private",
+						"payments"
+					],
+					"query": [
+						{
+							"key": "locale",
+							"value": "{{locale}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Блокировка депозита по пользователю",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"user-agent": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "crm_authz_token",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "{{auth_key_crm}}",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*;q=0.5, text/javascript, application/javascript, application/ecmascript, application/x-ecmascript"
+					},
+					{
+						"key": "content-type",
+						"value": "application/x-www-form-urlencoded; charset=UTF-8"
+					},
+					{
+						"key": "user-agent",
+						"value": "{{user_agent}}"
+					},
+					{
+						"key": "Device-Id",
+						"value": "{{device_id}}",
+						"type": "text"
+					},
+					{
+						"key": "Device-Type",
+						"value": "{{device_type}}",
+						"type": "text"
+					},
+					{
+						"key": "X-Requested-With",
+						"value": "XMLHttpRequest",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "utf8=%E2%9C%93&user_blocking_setting%5Btrading%5D=0&user_blocking_setting%5Bsupport%5D=0&user_blocking_setting%5Bdeposit%5D=0&user_blocking_setting%5Bdeposit%5D=1&user_blocking_setting%5Bwithdraw%5D=0&commit=Create+User+blocking+setting"
+				},
+				"url": {
+					"raw": "{{crm_url}}/users/{{userId}}/blocking_settings",
+					"host": [
+						"{{crm_url}}"
+					],
+					"path": [
+						"users",
+						"{{userId}}",
+						"blocking_settings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Депозит Бинопей1 без подтверждения",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{auth_key}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization-Token",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Device-Id",
+						"value": "{{device_id}}",
+						"type": "text"
+					},
+					{
+						"key": "Device-Type",
+						"value": "{{device_type}}",
+						"type": "text"
+					},
+					{
+						"key": "User-Agent",
+						"value": "{{user_agent}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"handler\": \"card\",\n    \"coupon_code\": \"\",\n    \"country_iso\": \"CK\",\n    \"amount\": 10001,\n    \"bonus\": \"none\",\n    \"get_bonus\": false,\n    \"get_coupon\": false\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/platform/private/payments?locale=en&ab_payment=new_card_flow",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"platform",
+						"private",
+						"payments"
+					],
+					"query": [
+						{
+							"key": "locale",
+							"value": "en"
+						},
+						{
+							"key": "ab_payment",
+							"value": "new_card_flow"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://crm.bill-01234-qa.sbinomo.com/payment_systems/56/edit",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{auth_key}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization-Token",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "user-agent",
+						"value": "{{user_agent}}"
+					},
+					{
+						"key": "Device-Id",
+						"value": "{{device_id}}",
+						"type": "text"
+					},
+					{
+						"key": "Device-Type",
+						"value": "{{device_type}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://bill-01234-qa.sbinomo.com/api/payments/cashier/test_card?amount=100000&card_number=4444444444444444&user_id=395979&locale=en",
+					"protocol": "https",
+					"host": [
+						"bill-01234-qa",
+						"sbinomo",
+						"com"
+					],
+					"path": [
+						"api",
+						"payments",
+						"cashier",
+						"test_card"
+					],
+					"query": [
+						{
+							"key": "amount",
+							"value": "100000"
+						},
+						{
+							"key": "card_number",
+							"value": "4444444444444444"
+						},
+						{
+							"key": "user_id",
+							"value": "395979"
+						},
+						{
+							"key": "locale",
+							"value": "en"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

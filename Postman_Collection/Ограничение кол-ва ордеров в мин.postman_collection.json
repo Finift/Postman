@@ -1,0 +1,333 @@
+{
+	"info": {
+		"_postman_id": "46b0eb7f-2e4e-459b-88a1-1eb384cb45b3",
+		"name": "Ограничение кол-ва ордеров в мин",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18247996"
+	},
+	"item": [
+		{
+			"name": "11й депозит Binopay2 универсал",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"}); //#проверка статуса 200",
+							"",
+							"pm.test(\"response has json with success\", function () {",
+							"    pm.response.to.have.jsonBody('success', true)",
+							"        .and.have.jsonBody(\"data\");",
+							"}); //проверка статуса success и наличия data",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"connection": true,
+					"content-type": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{auth_key}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization-Token",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "User-Agent",
+						"value": "{{user_agent}}",
+						"type": "text"
+					},
+					{
+						"key": "Device-Id",
+						"value": "{{device_id}}",
+						"type": "text"
+					},
+					{
+						"key": "Device-Type",
+						"value": "{{device_type}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=UTF-8",
+						"type": "text"
+					},
+					{
+						"key": "userId",
+						"value": "{{userId}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"amount\": 11,\n\"binopay2_delay\": \"no_delay\",\n\"binopay2_status\": \"success\",\n\"bonus\": \"none\",\n\"card_number\": \"1111222233334444\",\n\"country_iso\": \"{{iso}}\",\n\"coupon_code\": \"\",\n\"get_bonus\": false,\n\"get_coupon\": false,\n\"handler\": \"card\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/platform/private/payments?locale={{locale}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"platform",
+						"private",
+						"payments"
+					],
+					"query": [
+						{
+							"key": "locale",
+							"value": "{{locale}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Выгрузка всех пурсов пользователя",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"purse\", jsonData.data[0].id);",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {
+					"accept": true,
+					"user-agent": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{auth_key}}",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization-Token",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "User-Agent",
+						"value": "{{user_agent}}",
+						"type": "text"
+					},
+					{
+						"key": "Device-Id",
+						"value": "{{device_id}}",
+						"type": "text"
+					},
+					{
+						"key": "Device-Type",
+						"value": "{{device_type}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n",
+					"options": {
+						"raw": {
+							"language": "javascript"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.bill-01234-qa.sbinomo.com/platform/private/payouts/purses",
+					"protocol": "https",
+					"host": [
+						"api",
+						"bill-01234-qa",
+						"sbinomo",
+						"com"
+					],
+					"path": [
+						"platform",
+						"private",
+						"payouts",
+						"purses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "11й вывод Binopay2 - универсал",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"connection": true,
+					"content-type": true
+				},
+				"followOriginalHttpMethod": true,
+				"followAuthorizationHeader": true,
+				"maxRedirects": 12
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{auth_key}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization-Token",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.109 Safari/537.36",
+						"type": "text"
+					},
+					{
+						"key": "Device-Id",
+						"value": "{{device_id}}",
+						"type": "text"
+					},
+					{
+						"key": "Device-Type",
+						"value": "{{device_type}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=UTF-8",
+						"type": "text"
+					},
+					{
+						"key": "userId",
+						"value": "{{userId}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"amount\": 10,\n    \"binopay2_delay\": \"no_delay\",\n    \"binopay2_status\": \"success\",\n    \"card_number\": \"1111222233334444\",\n    \"comments_payout\": \"profits\",\n    \"comments_text\": \"\",\n    \"purse\": {{purse}}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/platform/private/payouts?locale={{locale}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"platform",
+						"private",
+						"payouts"
+					],
+					"query": [
+						{
+							"key": "locale",
+							"value": "{{locale}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

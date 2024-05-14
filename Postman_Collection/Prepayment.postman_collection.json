@@ -1,0 +1,360 @@
+{
+	"info": {
+		"_postman_id": "206f588a-8fda-4c38-8cf3-86f9eccb7435",
+		"name": "Prepayment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18247996"
+	},
+	"item": [
+		{
+			"name": "Вход в CRM для подтверждения вывода",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"{{email_crm}}\",\n  \"password\": \"{{password_crm}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://crm.bill-01234-qa.sbinomo.com/login",
+					"protocol": "https",
+					"host": [
+						"crm",
+						"bill-01234-qa",
+						"sbinomo",
+						"com"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Запрос аванса требует логгирования в црм",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"user-agent": true,
+					"connection": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{auth_key_crm}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization-Token",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*;q=0.5, text/javascript, application/javascript, application/ecmascript, application/x-ecmascript"
+					},
+					{
+						"key": "user-agent",
+						"value": "{{user_agent}}"
+					},
+					{
+						"key": "x-requested-with",
+						"value": "XMLHttpRequest"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "utf8=%E2%9C%93&_method=patch&_action=activate_prepayment&_delay=0&comment=&purse_name=Bank+Card"
+				},
+				"url": {
+					"raw": "{{crm_url}}/orders/bill-01234-qa-pgw-d6d8a7b18837fa",
+					"host": [
+						"{{crm_url}}"
+					],
+					"path": [
+						"orders",
+						"bill-01234-qa-pgw-d6d8a7b18837fa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Просмотр профиля трейдера в CRM",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept": true,
+					"accept-encoding": true,
+					"connection": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{auth_key_crm}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization-Token",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "authority",
+						"value": "crm.bill-01234-qa.sbinomo.com",
+						"disabled": true
+					},
+					{
+						"key": "accept",
+						"value": "text/html, application/xhtml+xml, application/xml"
+					},
+					{
+						"key": "accept-language",
+						"value": "ru,en;q=0.9,hi;q=0.8",
+						"disabled": true
+					},
+					{
+						"key": "cache-control",
+						"value": "no-cache",
+						"disabled": true
+					},
+					{
+						"key": "cookie",
+						"value": "_gcl_au=1.1.2021081869.1703608431; _fbp=fb.1.1703608431704.1240703097; _gid=GA1.2.135917458.1703608432; cto_bundle=wFHjr180U0twVXVsWTlWOFl2R1VQZFpwMCUyRmZBRGQ4MVIzMCUyQlhSUmU3VGo5VVQ2Rk9HMmtBV1pPc0lNWWhXJTJGOE4zY2hveTRBcGVSdldneXNFc0ljQVU3dTdWWEJlRXlqT3JKUUxlVFUwQTdoWHJ6YiUyQjN5ZEw4S1Fta1pGMU8zYjdFN3lBWiUyRjNiZE02Ujh5VTZGZlZOQ21BN3VnJTNEJTNE; crm_authz_token=eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlX25hbWUiOiJhZG1pbiIsInZhbGlkX3RvIjoxNzEwMzI5NjkzfQ.C3D88HJgjmGfH1fJK_kKMLxEeatNwMocoPwZLHuhq78; __exponea_time2__=0.21787452697753906; __exponea_etc__=551c304a-2f83-4a2f-bbc0-2d52f1301309; device_type=web; device_id=9da2615fbb2fe6e5e404cb066158f30b; authtoken=dd284cab-5552-4076-8039-96772a7a51d6; _ga_6TNVMCB3BC=GS1.1.1703756245.6.1.1703756425.60.0.0; _ga=GA1.1.1378405110.1703608431; _ga_EYQ8E8SVJX=GS1.1.1703756426.6.0.1703756426.0.0.0; _crm_binomo_com_session=N0JKaWdXTlFMRGh1cE4wZkI2UXM1S3paUmJINEZRQzFuL1dZRGJMcEMrdGNoa1F5SSsySmxMbDh3elFkOStpNzlhTENoWjdRSGN0QTBsL2wvSndLTEhHdnhnR3lZQi9mQXNCdDhrWDRkVkxwSVJlSnozQmVqdHprM0Q4UjRRUXU0T3B1VUtMMEJxaHh3Wittd21OL2p6S25WOU5pbHZRdkVTRzhUT1oyTElyN1AyOGwwTVE3blpKZXVzSEV4RWptLS1xWmZxcjUyQ0V1ckgyS2xpRmdvdW9RPT0%3D--f26675f29c7d95f5f1e1b9884ec94e88e8f989d9",
+						"disabled": true
+					},
+					{
+						"key": "home_page_geo",
+						"value": "CO",
+						"disabled": true
+					},
+					{
+						"key": "pragma",
+						"value": "no-cache",
+						"disabled": true
+					},
+					{
+						"key": "referer",
+						"value": "https://crm.bill-01234-qa.sbinomo.com/users/279782/prepayments",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Not_A Brand\";v=\"8\", \"Chromium\";v=\"120\", \"Google Chrome\";v=\"120\"",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"macOS\"",
+						"disabled": true
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty",
+						"disabled": true
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors",
+						"disabled": true
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-origin",
+						"disabled": true
+					},
+					{
+						"key": "user-agent",
+						"value": "{{user_agent}}"
+					},
+					{
+						"key": "x-custom-geo",
+						"value": "CO",
+						"disabled": true
+					},
+					{
+						"key": "x-xhr-referer",
+						"value": "https://crm.bill-01234-qa.sbinomo.com/users/279782/prepayments",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{crm_url}}/users/279783",
+					"host": [
+						"{{crm_url}}"
+					],
+					"path": [
+						"users",
+						"279783"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "содержание prepayments - требует входа в crm",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true,
+					"user-agent": true,
+					"accept-encoding": true,
+					"connection": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "{{auth_key_crm}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization-Token",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7"
+					},
+					{
+						"key": "cookie",
+						"value": "_gcl_au=1.1.2021081869.1703608431; _fbp=fb.1.1703608431704.1240703097; _gid=GA1.2.135917458.1703608432; cto_bundle=wFHjr180U0twVXVsWTlWOFl2R1VQZFpwMCUyRmZBRGQ4MVIzMCUyQlhSUmU3VGo5VVQ2Rk9HMmtBV1pPc0lNWWhXJTJGOE4zY2hveTRBcGVSdldneXNFc0ljQVU3dTdWWEJlRXlqT3JKUUxlVFUwQTdoWHJ6YiUyQjN5ZEw4S1Fta1pGMU8zYjdFN3lBWiUyRjNiZE02Ujh5VTZGZlZOQ21BN3VnJTNEJTNE; crm_authz_token=eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlX25hbWUiOiJhZG1pbiIsInZhbGlkX3RvIjoxNzEwMzI5NjkzfQ.C3D88HJgjmGfH1fJK_kKMLxEeatNwMocoPwZLHuhq78; __exponea_etc__=db2d5d1b-8b5c-4e74-aa56-93b0f22d7c16; __exponea_time2__=-0.9208381175994873; _ga_EYQ8E8SVJX=GS1.1.1703773850.9.1.1703775274.0.0.0; authtoken=f2f03648-a7e1-4efb-ba39-a3371842aa4a; device_type=web; device_id=9da2615fbb2fe6e5e404cb066158f30b; _ga_6TNVMCB3BC=GS1.1.1703773452.8.1.1703775276.54.0.0; _ga=GA1.2.1378405110.1703608431; _crm_binomo_com_session=UmpNdGR0dDRFcDJLWElOT2RicURaOGNkdkZMbEJEUHVGNzdlM0dxeGxHNXlEZU9jOHNIYzlWZHdCeUJNa3R1WXpQZ3BoeTlrRlVGcFczbGljT09WeU1PaExsbnVjK2t6emhhQnZHK29jeE1ZOVlKdHJLWHRVekFaMkx4N2xFVDVnNHZPU3BvQ29SNEhIMWpHdm9ydGpXTCt5YXkvalROUkZUMjVGQ3FVbUEwWTJ0MzNEcnd2QUd2ZzY1WTJESXJvLS1ZYVNjY25XUG5VVUMyRENZY29YeVVnPT0%3D--15e711337792d79b5d3ce72ea749ad8a5b8c0d11",
+						"disabled": true
+					},
+					{
+						"key": "user-agent",
+						"value": "{{user_agent}}"
+					},
+					{
+						"key": "Device-Type",
+						"value": "{{device_type}}",
+						"type": "text"
+					},
+					{
+						"key": "Device-Id",
+						"value": "{{device_id}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://crm.bill-01234-qa.sbinomo.com/users/279784/prepayments",
+					"protocol": "https",
+					"host": [
+						"crm",
+						"bill-01234-qa",
+						"sbinomo",
+						"com"
+					],
+					"path": [
+						"users",
+						"279784",
+						"prepayments"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

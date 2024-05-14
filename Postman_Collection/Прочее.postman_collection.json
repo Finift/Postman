@@ -1,0 +1,396 @@
+{
+	"info": {
+		"_postman_id": "7279ce77-e98a-41dc-9697-b7cb812a5846",
+		"name": "Прочее",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18247996"
+	},
+	"item": [
+		{
+			"name": "success project crm",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"user-agent": true,
+					"connection": true,
+					"accept-encoding": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzZXJ2aWNlX25hbWUiOiJ3aXRoZHJhd2FsX3ZlcmlmaWNhdGlvbiJ9.6apTAp854FTjxPtFoon39NgHC0C-AKXwpZq-MbX0-oY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=UTF-8",
+						"type": "text"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.109 Safari/537.36",
+						"type": "text"
+					},
+					{
+						"key": "Device-Id",
+						"value": "{{device_id}}",
+						"type": "text"
+					},
+					{
+						"key": "Device-Type",
+						"value": "{{device_type}}",
+						"type": "text"
+					},
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://crm.bill-01234-qa.sbinomo.com/api/internal/v1/cashier/projects/binomo",
+					"protocol": "https",
+					"host": [
+						"crm",
+						"bill-01234-qa",
+						"sbinomo",
+						"com"
+					],
+					"path": [
+						"api",
+						"internal",
+						"v1",
+						"cashier",
+						"projects",
+						"binomo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "подтверждение депа - RELEASE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{auth_key}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization-Token",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "authority",
+						"value": "api.release.sbinomo.com",
+						"disabled": true
+					},
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "authorization-token",
+						"value": "bf750fba-68bc-4740-a325-f0ea741dae2f",
+						"disabled": true
+					},
+					{
+						"key": "content-type",
+						"value": "application/json"
+					},
+					{
+						"key": "cookie",
+						"value": "_gcl_au=1.1.2021081869.1703608431; _fbp=fb.1.1703608431704.1240703097; cto_bundle=wFHjr180U0twVXVsWTlWOFl2R1VQZFpwMCUyRmZBRGQ4MVIzMCUyQlhSUmU3VGo5VVQ2Rk9HMmtBV1pPc0lNWWhXJTJGOE4zY2hveTRBcGVSdldneXNFc0ljQVU3dTdWWEJlRXlqT3JKUUxlVFUwQTdoWHJ6YiUyQjN5ZEw4S1Fta1pGMU8zYjdFN3lBWiUyRjNiZE02Ujh5VTZGZlZOQ21BN3VnJTNEJTNE; _ga_EYQ8E8SVJX=GS1.1.1704885972.11.1.1704886343.0.0.0; _ga=GA1.2.1378405110.1703608431; _gid=GA1.2.106986352.1707298187; _ga_6TNVMCB3BC=GS1.1.1707298185.22.1.1707298818.60.0.0; __exponea_time2__=0.3312644958496094; __exponea_etc__=3aeea531-0b71-4422-b63f-1c5b29bd9378; device_type=web; device_id=9da2615fbb2fe6e5e404cb066158f30b; authtoken=9ac5ed88-1514-437d-a435-ef88032f05f9"
+					},
+					{
+						"key": "Device-Id",
+						"value": "{{device_id}}"
+					},
+					{
+						"key": "Device-Type",
+						"value": "{{device_type}}"
+					},
+					{
+						"key": "user-agent",
+						"value": "{{user_agent}}"
+					},
+					{
+						"key": "x-custom-geo",
+						"value": "CK",
+						"disabled": true
+					},
+					{
+						"key": "userId",
+						"value": "299066",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"event\": \"cashier.transaction_result\",\n    \"meta\": {\n        \"payment_method\": \"card\",\n        \"amount_usd\": 1200,\n        \"preset_bonus\": \"no bonus\",\n        \"coupon\": \"no coupon\",\n        \"domain\": \"bill-01234-qa.sbinomo.com\",\n        \"transaction_status\": \"success\",\n        \"transaction_id\": \"bill-01234-qa-pgw-27879340627d87\"\n    }\n}"
+				},
+				"url": {
+					"raw": "https://api.bill-01234-qa.sbinomo.com/clickstream/v1/event?locale=en",
+					"protocol": "https",
+					"host": [
+						"api",
+						"bill-01234-qa",
+						"sbinomo",
+						"com"
+					],
+					"path": [
+						"clickstream",
+						"v1",
+						"event"
+					],
+					"query": [
+						{
+							"key": "locale",
+							"value": "en"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pgw попытки войти",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"user-agent": true,
+					"accept-encoding": true,
+					"host": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "65b5520d8108e32b65c3fbaf441cfec32c1f3f379d80a01098993d7122ffaef4",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Ruby",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "PGS-SHA256 binomo:65b5520d8108e32b65c3fbaf441cfec32c1f3f379d80a01098993d7122ffaef4",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Accept-Encoding",
+						"value": "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
+						"type": "text"
+					},
+					{
+						"key": "connection",
+						"value": "close",
+						"type": "text"
+					},
+					{
+						"key": "traceparent",
+						"value": "00-6dfd6b00ae282b9016b6b06ea0782707-38072dbd7874b155-01",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Host",
+						"value": "api.bill-01234-qa.sbinomo.com",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"token\":\"{{auth_key_crm}}\",\n    \"trader_id\": {{userId}},\n    \"device_type\":\"web\",\n    \"device_id\":\"{{device_id}}\",\n    \"ip\":\"127.0.0.1\",\n    \"http_user_agent\":\"web\"\n}"
+				},
+				"url": {
+					"raw": "https://api.bill-01234-qa.sbinomo.com:443/payment-gateway/secure/billing/initialize_payment",
+					"protocol": "https",
+					"host": [
+						"api",
+						"bill-01234-qa",
+						"sbinomo",
+						"com"
+					],
+					"port": "443",
+					"path": [
+						"payment-gateway",
+						"secure",
+						"billing",
+						"initialize_payment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Выгрузить все payment_groups и все payment_systems из crm",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{auth_key_crm}}",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization-Token",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "text/html, application/xhtml+xml, application/xml"
+					},
+					{
+						"key": "cache-control",
+						"value": "no-cache"
+					},
+					{
+						"key": "cookie",
+						"value": "_gcl_au=1.1.1193279494.1707403082; _fbp=fb.1.1707403082870.1421453797; _hjSessionUser_3112257=eyJpZCI6IjA1YjgzN2FlLTQwOTItNTEzZS04ZjJlLWY3ZTE0N2QyOGEyYyIsImNyZWF0ZWQiOjE3MDg0Mjc3ODI5MzcsImV4aXN0aW5nIjp0cnVlfQ==; crm_authz_token=eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlX25hbWUiOiJhZG1pbiIsInZhbGlkX3RvIjoxNzE2MjkwNzAzfQ.5IRzdNdCbrOQibB7JmAJA2pFE9VWpxsF2mnFaW844TQ; _hjSessionUser_3112323=eyJpZCI6ImZiYTk3NDgxLTVlMzYtNWM2Zi1iNzg0LWZkNjk3Y2FmZTIxZSIsImNyZWF0ZWQiOjE3MDg1OTI4MDY5MjksImV4aXN0aW5nIjp0cnVlfQ==; cto_bundle=y8bNI180U0twVXVsWTlWOFl2R1VQZFpwMCUyRlQzSTc3R2s1RkdhVE5wNmluTVglMkZiZlFEQ2UwYldqZEVSNDdWYmlwZXd5bHJvJTJGYWZlR1hHSDJBY0pFM0lBWDlvbExsTUVkZ1NlNGhtQ0s4emRLOFdDVkV6U0NVSE9CTHBOaFVmJTJGeWUxS2NzNWxJUVpuRnBaQjklMkJTY1RxS3AlMkZ3dmZiaFZlWkFLJTJGQ3R6SDBDajM0QmZJJTJCdTlrWWpOcm5GdHFkYkZJUVNWM3pXMjBET0JraTVkdWVPN29MTE5ZMUp1QSUzRCUzRA; _gid=GA1.2.556547727.1708930619; _ga_EYQ8E8SVJX=GS1.1.1708944537.19.1.1708945102.0.0.0; __exponea_etc__=57bfd089-1892-43fd-b224-04f100238b62; authtoken=dc9bdcae-0192-4428-9b26-4add892ba263; device_type=web; device_id=9da2615fbb2fe6e5e404cb066158f30b; _ga_6TNVMCB3BC=GS1.1.1708953469.43.1.1708956221.54.0.0; _ga=GA1.1.324710283.1707403083; _crm_binomo_com_session=dzRNai9ENURBTzhBdFh6MVNuaE5aKzlqUWtxN2ZnWUNKYjdDeGNTSmlxTkx5ellZWWVocDZtQlZDNDE2elJFVXdPcE1jNlhGK3VJdnN0VFJqdlN2cUh3SUJ1UnZSTFc1a1lHSWRXaGR6KzI0NHpzbVllNGNrTCtIYWhJUHF5dWtvT21JcHJzLzhKbEJpSElCSWZqKzlnOTZVUjNzTWh5M0Jud2VUR041WTVGaUIveWhqK1Zic01EOGRrVE54OVpmLS1wV1F3dGZ6NkUzdkRmck1mcnY0WWdRPT0%3D--120175de0615733c097fa6e6fb88a97cb17c7cb3"
+					},
+					{
+						"key": "user-agent",
+						"value": "{{user_agent}}"
+					}
+				],
+				"url": {
+					"raw": "{{crm_url}}/payment_groups",
+					"host": [
+						"{{crm_url}}"
+					],
+					"path": [
+						"payment_groups"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}

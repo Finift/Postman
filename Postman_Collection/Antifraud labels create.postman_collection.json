@@ -1,0 +1,477 @@
+{
+	"info": {
+		"_postman_id": "4f63b5d5-66e8-4831-a36b-e40b184bb93b",
+		"name": "Antifraud labels create",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18247996"
+	},
+	"item": [
+		{
+			"name": "Labels",
+			"item": [
+				{
+					"name": "Money Laundering",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true,
+							"user-agent": true,
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth_key_crm}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "user-agent",
+								"value": "{{user_agent}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Device-Id",
+								"value": "{{device_id}}",
+								"type": "text"
+							},
+							{
+								"key": "Device-Type",
+								"value": "{{device_type}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"guid\": \"{{transaction_id}}\",\n    \"status\": \"rejected_by_antifraud\",\n    \"labels\": [\n        {\n            \"name\": \"AF: Money Laundering\",\n            \"type\": \"important\"\n        }\n    ],\n    \"description\": \"Красный\",\n    \"additional_info\": {\n        \"description_type\": \"important\"\n    }\n}"
+						},
+						"url": {
+							"raw": "https://crm.bill-01234-qa.sbinomo.com/internal/v1/antifraud_order_notes?guid=bill-01234-qa-pgw-d5339bc2a5c633",
+							"protocol": "https",
+							"host": [
+								"crm",
+								"bill-01234-qa",
+								"sbinomo",
+								"com"
+							],
+							"path": [
+								"internal",
+								"v1",
+								"antifraud_order_notes"
+							],
+							"query": [
+								{
+									"key": "guid",
+									"value": "bill-01234-qa-pgw-d5339bc2a5c633"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AF: Crypto Limits",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true,
+							"user-agent": true,
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth_key_crm}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "user-agent",
+								"value": "{{user_agent}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Device-Id",
+								"value": "{{device_id}}",
+								"type": "text"
+							},
+							{
+								"key": "Device-Type",
+								"value": "{{device_type}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"guid\": \"{{transaction_id}}\",\n    \"status\": \"fraud_suspicious\",\n    \"labels\": [\n        {\n            \"name\": \"AF: Crypto Limits\",\n            \"type\": \"warning\"\n        }\n    ],\n    \"description\": \"Красный\",\n    \"additional_info\": {\n        \"description_type\": \"warning\"\n    }\n}"
+						},
+						"url": {
+							"raw": "https://crm.bill-01234-qa.sbinomo.com/internal/v1/antifraud_order_notes",
+							"protocol": "https",
+							"host": [
+								"crm",
+								"bill-01234-qa",
+								"sbinomo",
+								"com"
+							],
+							"path": [
+								"internal",
+								"v1",
+								"antifraud_order_notes"
+							],
+							"query": [
+								{
+									"key": "locale",
+									"value": "en",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AF:OK",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true,
+							"user-agent": true,
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth_key_crm}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "user-agent",
+								"value": "{{user_agent}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Device-Id",
+								"value": "{{device_id}}",
+								"type": "text"
+							},
+							{
+								"key": "Device-Type",
+								"value": "{{device_type}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"guid\": \"{{transaction_id}}\",\n    \"status\": \"fast_track\",\n    \"labels\": [\n        {\n            \"name\": \"AF: OK\",\n            \"type\": \"success\"\n        }\n    ],\n    \"description\": \"Зелёный\",\n    \"additional_info\": {\n        \"description_type\": \"success\"\n    }\n}"
+						},
+						"url": {
+							"raw": "https://crm.bill-01234-qa.sbinomo.com/internal/v1/antifraud_order_notes",
+							"protocol": "https",
+							"host": [
+								"crm",
+								"bill-01234-qa",
+								"sbinomo",
+								"com"
+							],
+							"path": [
+								"internal",
+								"v1",
+								"antifraud_order_notes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fail Fast Track",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true,
+							"user-agent": true,
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth_key_crm}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "home_page_geo",
+								"value": "CO"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36"
+							},
+							{
+								"key": "x-custom-geo",
+								"value": "CO"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Device-Id",
+								"value": "7d5103538ca44ade9c0b21116751d9e9"
+							},
+							{
+								"key": "Device-Type",
+								"value": "web"
+							},
+							{
+								"key": "guid",
+								"value": "bill-01234-qa-pgw-e945ecf027f2dd"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"guid\": \"{{transaction_id}}\",\n    \"status\": \"fraud_suspicious\",\n    \"labels\": [\n        {\n            \"name\": \"AF: No Turnover\",\n            \"type\": \"warning\"\n        }\n    ],\n    \"description\": \"Жёлтый\",\n    \"additional_info\": {\n        \"description_type\": \"warning\"\n    }\n}"
+						},
+						"url": {
+							"raw": "https://crm.bill-01234-qa.sbinomo.com/internal/v1/antifraud_order_notes?guid=bill-01234-qa-pgw-e945ecf027f2dd",
+							"protocol": "https",
+							"host": [
+								"crm",
+								"bill-01234-qa",
+								"sbinomo",
+								"com"
+							],
+							"path": [
+								"internal",
+								"v1",
+								"antifraud_order_notes"
+							],
+							"query": [
+								{
+									"key": "locale",
+									"value": "en",
+									"disabled": true
+								},
+								{
+									"key": "guid",
+									"value": "bill-01234-qa-pgw-e945ecf027f2dd"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Rejection Reason - адрес и тело верные, с правами не разобралась+нужен сервис антифр-мен",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true,
+					"user-agent": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{auth_key}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization-Token",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Device-Id",
+						"value": "f6f0b7960e81649fd64112ff62c729fc",
+						"type": "text"
+					},
+					{
+						"key": "Device-Type",
+						"value": "web",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Role-Name",
+						"value": "1",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "user_id",
+						"value": "1",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "User-Agent",
+						"value": "{{user_agent}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"reason\": \"too_big_deposit\",\n    \"user_id\": {{userId}}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.bill-01234-qa.sbin-admin.com/antifraud-management/v1/alert",
+					"protocol": "https",
+					"host": [
+						"api",
+						"bill-01234-qa",
+						"sbin-admin",
+						"com"
+					],
+					"path": [
+						"antifraud-management",
+						"v1",
+						"alert"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,485 @@
+{
+	"info": {
+		"_postman_id": "75ba9f2c-944e-468e-a836-fd2872e4b470",
+		"name": "Fast track",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18247996"
+	},
+	"item": [
+		{
+			"name": "депозит Binopay2",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"connection": true,
+					"content-type": true
+				},
+				"followOriginalHttpMethod": true,
+				"followAuthorizationHeader": true,
+				"maxRedirects": 12
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{auth_key}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization-Token",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.109 Safari/537.36",
+						"type": "text"
+					},
+					{
+						"key": "Device-Id",
+						"value": "{{device_id}}",
+						"type": "text"
+					},
+					{
+						"key": "Device-Type",
+						"value": "{{device_type}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=UTF-8",
+						"type": "text"
+					},
+					{
+						"key": "userId",
+						"value": "{{userId}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"amount\": 501,\n\"binopay2_delay\": \"no_delay\",\n\"binopay2_status\": \"success\",\n\"bonus\": \"none\",\n\"card_number\": \"1111222233334444\",\n\"country_iso\": \"{{iso}}\",\n\"coupon_code\": \"\",\n\"get_bonus\": false,\n\"get_coupon\": false,\n\"handler\": \"card\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/platform/private/payments?locale={{locale}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"platform",
+						"private",
+						"payments"
+					],
+					"query": [
+						{
+							"key": "locale",
+							"value": "{{locale}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "вывод Binopay2",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"connection": true,
+					"content-type": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{auth_key}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization-Token",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.109 Safari/537.36",
+						"type": "text"
+					},
+					{
+						"key": "Device-Id",
+						"value": "{{device_id}}",
+						"type": "text"
+					},
+					{
+						"key": "Device-Type",
+						"value": "{{device_type}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=UTF-8",
+						"type": "text"
+					},
+					{
+						"key": "userId",
+						"value": "{{userId}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"amount\": 1001,\n    \"binopay2_delay\": \"no_delay\",\n    \"binopay2_status\": \"success\",\n    \"card_number\": \"1111222233334444\",\n    \"comments_payout\": \"profits\",\n    \"comments_text\": \"\",\n    \"purse\": {{purse}}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/platform/private/payouts?locale={{locale}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"platform",
+						"private",
+						"payouts"
+					],
+					"query": [
+						{
+							"key": "locale",
+							"value": "{{locale}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "label",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization-Token",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlX25hbWUiOiJhZG1pbiIsInZhbGlkX3RvIjoxNzA4MDc4MTkxfQ.xVwd0okF86qayo0NmjL0kU7XdmBBZbEpiyqzngrcyeU"
+					},
+					{
+						"key": "email",
+						"value": "{{email}}",
+						"type": "text"
+					},
+					{
+						"key": "password",
+						"value": "{{password}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.bill-01234-qa.sbin-admin.com/withdrawal-verification/v1/orders-labels?orders={{transaction_id}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"bill-01234-qa",
+						"sbin-admin",
+						"com"
+					],
+					"path": [
+						"withdrawal-verification",
+						"v1",
+						"orders-labels"
+					],
+					"query": [
+						{
+							"key": "locale",
+							"value": "en",
+							"disabled": true
+						},
+						{
+							"key": "orders",
+							"value": "{{transaction_id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "страница ордера в crm",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authority",
+						"value": "crm.bill-01234-qa.sbinomo.com"
+					},
+					{
+						"key": "accept",
+						"value": "text/html, application/xhtml+xml, application/xml"
+					},
+					{
+						"key": "accept-language",
+						"value": "ru,en;q=0.9,hi;q=0.8"
+					},
+					{
+						"key": "cache-control",
+						"value": "no-cache"
+					},
+					{
+						"key": "cookie",
+						"value": "_gcl_au=1.1.387951769.1698068444; _fbp=fb.1.1698068446281.1115861860; _ga_3Q4T3038T3=GS1.1.1699347528.2.1.1699349788.0.0.0; _gid=GA1.2.709843052.1699861099; _hjSessionUser_3112257=eyJpZCI6IjkxMmZlYzRhLTM3NDctNWJlZi04YjMxLTU3MzA4MDE2OTA4YiIsImNyZWF0ZWQiOjE2OTk4NzUzODc0NzYsImV4aXN0aW5nIjp0cnVlfQ==; cto_bundle=j9vTcF9tNGR5bG80YWFoYXN5eEI4dEdZMTZxRVpzRFgzeHhJZHVEZXg0dENjOTQwNEJnY1olMkJQelJzNkRvajRZa3llVGp0dSUyRmphNm9EU3RlZjhKRlYwSmVIUEklMkJldUs2bVBrdHpDc3lYV0V0NlRyUnNaVXFHJTJGRDdkbGZaS3Q4WU5reUl5WTdhMTBVMGFtN0ozUEhzd2h3WVUlMkZWUERJWmJ4WncycjdzQSUyQnUlMkZLMmZQJTJGR0lhSnc3bDczZWg2akRQQ2NIVzA0dHN1UE9sWHJjQkdsQlptUGcyUFRKUSUzRCUzRA; device_type=web; device_id=f6f0b7960e81649fd64112ff62c729fc; __exponea_etc__=73f11e49-7ca0-406b-ada6-a89165b1f4e6; _ga=GA1.2.396825759.1698068445; _ga_EYQ8E8SVJX=GS1.1.1700122698.27.1.1700123166.0.0.0; crm_authz_token=eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlX25hbWUiOiJhZG1pbiIsInZhbGlkX3RvIjoxNzA4MDc4MTkxfQ.xVwd0okF86qayo0NmjL0kU7XdmBBZbEpiyqzngrcyeU; _crm_binomo_com_session=cmIxZ2p0a3UzdDRYblRrcjl4bHkzZzhtRWsrSExHeGo2dEZZejdxaEhQUm91OVdYK1JRYUkzV3dnUk5pbytaRUVsd2dCbWtYK2x5MTA5U3crV3ZURmE2bm9xdGVFRHlzRXBQaFhscXNkTHNLeGwwUWNiMFp3T0FXVFZzZk9Mc2FwRFFFc213aklrNm9SSTB5R3p1RnlWZmdVaEZGWnRMTFEyZndMU0tWeHQ5NlVIRllyWGRwT0Erb0l3U2VhODZaWmlZVDVpcWoxajlXRzBqdUwvYzhvUT09LS1GVnBMT0pTajNJOUlhWjRTeGptR01RPT0%3D--a8bfefdab02a5ea66317bbf5f74cbc99b5bb1503"
+					},
+					{
+						"key": "home_page_geo",
+						"value": "UZ"
+					},
+					{
+						"key": "pragma",
+						"value": "no-cache"
+					},
+					{
+						"key": "referer",
+						"value": "https://crm.bill-01234-qa.sbinomo.com/orders?utf8=%E2%9C%93&query_type=purse&query=&date_field=created_at&date_from=&date_till=&type=withdraws&status=&system=&provider=&trader_status=&per_page=50&manager_id=&auto_process_banned=&manual_processing=true&hide_antifraud_inprogress=1"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Google Chrome\";v=\"117\", \"Not;A=Brand\";v=\"8\", \"Chromium\";v=\"117\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"macOS\""
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-origin"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36"
+					},
+					{
+						"key": "x-custom-geo",
+						"value": "UZ"
+					},
+					{
+						"key": "x-xhr-referer",
+						"value": "https://crm.bill-01234-qa.sbinomo.com/orders?utf8=%E2%9C%93&query_type=purse&query=&date_field=created_at&date_from=&date_till=&type=withdraws&status=&system=&provider=&trader_status=&per_page=50&manager_id=&auto_process_banned=&manual_processing=true&hide_antifraud_inprogress=1"
+					}
+				],
+				"url": {
+					"raw": "{{crm_url}}/orders/{{transaction_id}}",
+					"host": [
+						"{{crm_url}}"
+					],
+					"path": [
+						"orders",
+						"{{transaction_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "запрос статуса ордера в withdrawal-ver =kafka Withdr_ver_v1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{auth_key_crm}}",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization-Token",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Device-Type",
+						"value": "{{device_type}}",
+						"type": "text"
+					},
+					{
+						"key": "Device-Id",
+						"value": "{{device_id}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.bill-01234-qa.sbin-admin.com/withdrawal-verification/v1/orders-labels?orders={{transaction_id}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"bill-01234-qa",
+						"sbin-admin",
+						"com"
+					],
+					"path": [
+						"withdrawal-verification",
+						"v1",
+						"orders-labels"
+					],
+					"query": [
+						{
+							"key": "orders",
+							"value": "{{transaction_id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

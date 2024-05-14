@@ -1,0 +1,164 @@
+{
+	"info": {
+		"_postman_id": "48bb5611-58ac-4c4e-8c3c-b7370dbce8b8",
+		"name": "Блокировки и их проверка",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18247996"
+	},
+	"item": [
+		{
+			"name": "Блокировка депозитов пользователю",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzZXJ2aWNlX25hbWUiOiJ3aXRoZHJhd2FsX3ZlcmlmaWNhdGlvbiJ9.6apTAp854FTjxPtFoon39NgHC0C-AKXwpZq-MbX0-oY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{crm_url}}/internal/v1/users/299100/block_deposit?blocked=true",
+					"host": [
+						"{{crm_url}}"
+					],
+					"path": [
+						"internal",
+						"v1",
+						"users",
+						"299100",
+						"block_deposit"
+					],
+					"query": [
+						{
+							"key": "blocked",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Заблокированные страны - НЕ РАБОТАЮТ, ДОДЕЛАЙ!!!",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzZXJ2aWNlX25hbWUiOiJ3aXRoZHJhd2FsX3ZlcmlmaWNhdGlvbiJ9.6apTAp854FTjxPtFoon39NgHC0C-AKXwpZq-MbX0-oY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{crm_url}}/internal/v1/blocking_settings/countries",
+					"host": [
+						"{{crm_url}}"
+					],
+					"path": [
+						"internal",
+						"v1",
+						"blocking_settings",
+						"countries"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Блокировка выводов пользователю",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzZXJ2aWNlX25hbWUiOiJ3aXRoZHJhd2FsX3ZlcmlmaWNhdGlvbiJ9.6apTAp854FTjxPtFoon39NgHC0C-AKXwpZq-MbX0-oY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{crm_url}}/internal/v1/users/299100/block_withdrawal?blocked=true",
+					"host": [
+						"{{crm_url}}"
+					],
+					"path": [
+						"internal",
+						"v1",
+						"users",
+						"299100",
+						"block_withdrawal"
+					],
+					"query": [
+						{
+							"key": "blocked",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
