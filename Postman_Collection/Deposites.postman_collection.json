@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "4c4b26fd-7fc4-47a1-8240-fe9f0dacd363",
 		"name": "Deposites",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
 		"_exporter_id": "18247996"
 	},
 	"item": [
@@ -44,23 +44,11 @@
 			"request": {
 				"auth": {
 					"type": "apikey",
-					"apikey": [
-						{
-							"key": "value",
-							"value": "{{auth_key}}",
-							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "Authorization-Token",
-							"type": "string"
-						},
-						{
-							"key": "in",
-							"value": "header",
-							"type": "string"
-						}
-					]
+					"apikey": {
+						"value": "{{auth_key}}",
+						"key": "Authorization-Token",
+						"in": "header"
+					}
 				},
 				"method": "POST",
 				"header": [
@@ -87,7 +75,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"amount\": 1000,\n\"binopay2_delay\": \"no_delay\",\n\"binopay2_status\": \"success\",\n\"bonus\": \"\",\n\"card_number\": \"1111222233334444\",\n\"country_iso\": \"{{iso}}\",\n\"coupon_code\": \"\",\n\"get_bonus\": false,\n\"get_coupon\": false,\n\"handler\": \"card\"\n}",
+					"raw": "{\"amount\": 10,\n\"binopay2_delay\": \"no_delay\",\n\"binopay2_status\": \"processing\",\n\"bonus\": \"\",\n\"card_number\": \"1111222233334444\",\n\"country_iso\": \"{{iso}}\",\n\"coupon_code\": \"\",\n\"get_bonus\": false,\n\"get_coupon\": false,\n\"handler\": \"card\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -149,23 +137,11 @@
 			"request": {
 				"auth": {
 					"type": "apikey",
-					"apikey": [
-						{
-							"key": "value",
-							"value": "{{auth_key}}",
-							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "Authorization-Token",
-							"type": "string"
-						},
-						{
-							"key": "in",
-							"value": "header",
-							"type": "string"
-						}
-					]
+					"apikey": {
+						"value": "{{auth_key}}",
+						"key": "Authorization-Token",
+						"in": "header"
+					}
 				},
 				"method": "POST",
 				"header": [
@@ -272,23 +248,11 @@
 			"request": {
 				"auth": {
 					"type": "apikey",
-					"apikey": [
-						{
-							"key": "value",
-							"value": "{{auth_key}}",
-							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "Authorization-Token",
-							"type": "string"
-						},
-						{
-							"key": "in",
-							"value": "header",
-							"type": "string"
-						}
-					]
+					"apikey": {
+						"value": "{{auth_key}}",
+						"key": "Authorization-Token",
+						"in": "header"
+					}
 				},
 				"method": "GET",
 				"header": [
@@ -327,18 +291,7 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "{{BASE_URL}}/platform/private/transactions/{{dep_transaction_id}}",
-					"host": [
-						"{{BASE_URL}}"
-					],
-					"path": [
-						"platform",
-						"private",
-						"transactions",
-						"{{dep_transaction_id}}"
-					]
-				}
+				"url": "{{BASE_URL}}/platform/private/transactions/{{dep_transaction_id}}"
 			},
 			"response": []
 		},
@@ -380,23 +333,11 @@
 			"request": {
 				"auth": {
 					"type": "apikey",
-					"apikey": [
-						{
-							"key": "value",
-							"value": "{{auth_key}}",
-							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "Authorization-Token",
-							"type": "string"
-						},
-						{
-							"key": "in",
-							"value": "header",
-							"type": "string"
-						}
-					]
+					"apikey": {
+						"value": "{{auth_key}}",
+						"key": "Authorization-Token",
+						"in": "header"
+					}
 				},
 				"method": "GET",
 				"header": [
@@ -488,23 +429,11 @@
 			"request": {
 				"auth": {
 					"type": "apikey",
-					"apikey": [
-						{
-							"key": "in",
-							"value": "header",
-							"type": "string"
-						},
-						{
-							"key": "value",
-							"value": "{{auth_key_crm}}",
-							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "Authorization-Token",
-							"type": "string"
-						}
-					]
+					"apikey": {
+						"in": "header",
+						"value": "{{auth_key_crm}}",
+						"key": "Authorization-Token"
+					}
 				},
 				"method": "GET",
 				"header": [
@@ -522,16 +451,7 @@
 						"value": "{{user_agent}}"
 					}
 				],
-				"url": {
-					"raw": "{{crm_url}}/orders/{{dep_transaction_id}}",
-					"host": [
-						"{{crm_url}}"
-					],
-					"path": [
-						"orders",
-						"{{dep_transaction_id}}"
-					]
-				}
+				"url": "{{crm_url}}/orders/{{dep_transaction_id}}"
 			},
 			"response": []
 		},
@@ -569,23 +489,11 @@
 			"request": {
 				"auth": {
 					"type": "apikey",
-					"apikey": [
-						{
-							"key": "value",
-							"value": "{{auth_key}}",
-							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "Authorization-Token",
-							"type": "string"
-						},
-						{
-							"key": "in",
-							"value": "header",
-							"type": "string"
-						}
-					]
+					"apikey": {
+						"value": "{{auth_key}}",
+						"key": "Authorization-Token",
+						"in": "header"
+					}
 				},
 				"method": "POST",
 				"header": [
@@ -678,23 +586,11 @@
 			"request": {
 				"auth": {
 					"type": "apikey",
-					"apikey": [
-						{
-							"key": "value",
-							"value": "{{auth_key}}",
-							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "Authorization-Token",
-							"type": "string"
-						},
-						{
-							"key": "in",
-							"value": "header",
-							"type": "string"
-						}
-					]
+					"apikey": {
+						"value": "{{auth_key}}",
+						"key": "Authorization-Token",
+						"in": "header"
+					}
 				},
 				"method": "POST",
 				"header": [
@@ -765,23 +661,11 @@
 			"request": {
 				"auth": {
 					"type": "apikey",
-					"apikey": [
-						{
-							"key": "key",
-							"value": "crm_authz_token",
-							"type": "string"
-						},
-						{
-							"key": "value",
-							"value": "{{auth_key_crm}}",
-							"type": "string"
-						},
-						{
-							"key": "in",
-							"value": "header",
-							"type": "string"
-						}
-					]
+					"apikey": {
+						"key": "crm_authz_token",
+						"value": "{{auth_key_crm}}",
+						"in": "header"
+					}
 				},
 				"method": "POST",
 				"header": [
@@ -817,17 +701,7 @@
 					"mode": "raw",
 					"raw": "utf8=%E2%9C%93&user_blocking_setting%5Btrading%5D=0&user_blocking_setting%5Bsupport%5D=0&user_blocking_setting%5Bdeposit%5D=0&user_blocking_setting%5Bdeposit%5D=1&user_blocking_setting%5Bwithdraw%5D=0&commit=Create+User+blocking+setting"
 				},
-				"url": {
-					"raw": "{{crm_url}}/users/{{userId}}/blocking_settings",
-					"host": [
-						"{{crm_url}}"
-					],
-					"path": [
-						"users",
-						"{{userId}}",
-						"blocking_settings"
-					]
-				}
+				"url": "{{crm_url}}/users/{{userId}}/blocking_settings"
 			},
 			"response": []
 		},
@@ -836,23 +710,11 @@
 			"request": {
 				"auth": {
 					"type": "apikey",
-					"apikey": [
-						{
-							"key": "value",
-							"value": "{{auth_key}}",
-							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "Authorization-Token",
-							"type": "string"
-						},
-						{
-							"key": "in",
-							"value": "header",
-							"type": "string"
-						}
-					]
+					"apikey": {
+						"value": "{{auth_key}}",
+						"key": "Authorization-Token",
+						"in": "header"
+					}
 				},
 				"method": "POST",
 				"header": [
@@ -906,88 +768,169 @@
 			"response": []
 		},
 		{
-			"name": "https://crm.bill-01234-qa.sbinomo.com/payment_systems/56/edit",
+			"name": "Список ордеров юзера",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "text/html, application/xhtml+xml, application/xml"
+					},
+					{
+						"key": "accept-language",
+						"value": "ru,en;q=0.9,hi;q=0.8"
+					},
+					{
+						"key": "cookie",
+						"value": "_gcl_au=1.1.456374441.1717501184; _fbp=fb.1.1717501184830.610921877632229664; crm_authz_token=eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlX25hbWUiOiJhZG1pbiIsInZhbGlkX3RvIjoxNzI2NjQ1NzI5fQ.PhtQiDo32Rba_QMbNh46We4FhBxajPn2PBVSQRkw08U; _ga=GA1.1.385477629.1717501184; cto_bundle=yrfCn19BUUtGRnJNMDVJMDZycmpSJTJCRVBGb0ZzeW1NN3dQQyUyRmNWJTJCbnZkVVpqTGpoeGYwc3VLcldMJTJGN3BrVXNxMVdReEducW5zalhra2p1UjhyMTliJTJCWWVUaUtHcUlqMmx4TWJFZEZhbExKMkFrNHYlMkJ0QUszN1JWZCUyRkwzc1NoZ3d5RkhOZWF5Ujl1NWtNb05GZm51T0drZHBqQW01eXdxa0NtQkE4UWtIOHRwYjdoODZ6bjdsalVBdEZENE9malJLWnRpMThucnowNnBRMDVUeVVGJTJCaHhKbXQ4USUzRCUzRA; _clck=bdvze3%7C2%7Cfni%7C0%7C1616; _ga_3Q4T3038T3=GS1.1.1721223422.1.1.1721223475.7.0.0; __exponea_etc__=4c47601b-0729-4337-aca8-8119bd427eb4; _ga_EYQ8E8SVJX=GS1.1.1721816782.50.0.1721816782.0.0.0; _ga_6TNVMCB3BC=GS1.1.1721815152.121.1.1721817637.60.0.0; authtoken=3f90a480-2133-42d0-824a-ddf3c4a26b44; device_type=web; device_id=e20c76d2891568f9f69fbbaf7521911d; _crm_binomo_com_session=N2NDcUh1cmxPd0c2YzdLREphWWFTeGowcHRWNFI0VE9uU0I1cE4xT1NUNit5WXJ3L3ZxNzVrS09wRDg3cmo0U1p4eWVnRVpBZXNsQndMN2pzMWliRk9ueEtZaXNWaUJLemE1ZEVvTWFqazU3Zm8zcjA4Rk4rK0ErUW5KYWE0dS9NTHRlNUNYZGVRU0J0Y3FCbzQ2ZUxYcDVKOGhLdXFseE84emMvdldNNkVYNTYzL2pWeW42VnZqL0FsMnl1Y200LS04WDIyZFpUdytrRC95SGVuRUgzUHBBPT0%3D--4f63e9e9524e8a258c6a46ba84c81336872a6608"
+					},
+					{
+						"key": "home_page_geo",
+						"value": "FM"
+					},
+					{
+						"key": "priority",
+						"value": "u=1, i"
+					},
+					{
+						"key": "referer",
+						"value": "https://crm.bill-01234-qa.sbinomo.com/users/300453/balance"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Not/A)Brand\";v=\"8\", \"Chromium\";v=\"126\", \"Google Chrome\";v=\"126\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"macOS\""
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-origin"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
+					},
+					{
+						"key": "x-custom-geo",
+						"value": "FM"
+					},
+					{
+						"key": "x-xhr-referer",
+						"value": "https://crm.bill-01234-qa.sbinomo.com/users/300453/balance"
+					}
+				],
+				"url": "https://crm.bill-01234-qa.sbinomo.com/users/300453/orders"
+			},
+			"response": []
+		},
+		{
+			"name": "Просмотр ордера депозит",
 			"protocolProfileBehavior": {
 				"disabledSystemHeaders": {
-					"user-agent": true
+					"user-agent": true,
+					"accept": true
 				}
 			},
 			"request": {
 				"auth": {
 					"type": "apikey",
-					"apikey": [
-						{
-							"key": "value",
-							"value": "{{auth_key}}",
-							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "Authorization-Token",
-							"type": "string"
-						},
-						{
-							"key": "in",
-							"value": "header",
-							"type": "string"
-						}
-					]
+					"apikey": {
+						"value": "{{auth_key_crm}}",
+						"key": "Authorization-token",
+						"in": "header"
+					}
 				},
-				"method": "POST",
+				"method": "GET",
 				"header": [
 					{
+						"key": "accept",
+						"value": "text/html, application/xhtml+xml, application/xml"
+					},
+					{
+						"key": "accept-language",
+						"value": "ru,en;q=0.9,hi;q=0.8",
+						"disabled": true
+					},
+					{
+						"key": "cookie",
+						"value": "_gcl_au=1.1.547674860.1722517083; _ga=GA1.1.1892607743.1722517083; _fbp=fb.1.1722517083137.426115577710788757; crm_authz_token=eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlX25hbWUiOiJhZG1pbiIsInZhbGlkX3RvIjoxNzMwODA0NDA3fQ.VHDwnI2GfpMbBl2RTR-JyXYTsKiWkcQ7jcw3ewhnLRE; cto_bundle=6kkR6F84aU96Z3JQWkhsRzZ6Q2VXNEdaJTJCNUFPSUNCa0o1b1dIbmF0eVdEZzNhNUUlMkI1REdxVFNPSEFHMlc5eWhINmwwJTJGeVFKSElqSjZQdmJUTDM0TXFUQ3pOZXV1Y1lOZEUxYzVaTE5vSUQwNmdtOVc5VzBReDFvRFgxTFFtSFlNbkZqSnlXenVIakpqQ3RiVTFyVkUyaldjVUslMkJMQlUlMkZDc2o3SndtWTVVTENTNUh2VFB2c1J2WEllZnF6WXNNYWNNcG40T1hrYiUyRmtjWDY5OVNwMjZHcDNSR1VnJTNEJTNE; _ga_EYQ8E8SVJX=GS1.1.1722954225.4.0.1722954225.0.0.0; _ga_N0ZH0S2X6S=GS1.1.1722954225.5.1.1722954586.40.0.0; __exponea_etc__=0bb4e4d6-07df-4bfd-a390-60f99cc393fb; authtoken=f56c3a87-c44b-4a94-b5e3-6b68de8d4b55; device_type=web; device_id=7838e5918d3e30042a96e14281337170; _ga_6TNVMCB3BC=GS1.1.1723023744.17.0.1723023744.60.0.0; _crm_binomo_com_session=WnNOUVRkbGZWOUF6SE84ZTI1S2dvN0FSY1ZIRkpCWU1CL3ZKUEFESjBGbnNBWnRxRVZKVUhRM1NaRFZKMm5DMGxHWmVBTHdOWVBMMXhRaDAzeWVWK0pkUUJoNm9xUDlKb2JycFZ3U3lLUXllRHZRVUx5YXh6bUFVWUFrZ1RiN1dvYmxiMEx0WkU5K0ZRZ3RvbW5VR0ZrdVZnS3lCWWtySUZJczF5S2JZTVBTemZrbjVnbVFLazBsZDVINUora0NNLS1ZVlZnMCtxNUJnYitBa3J5NGZXSm1BPT0%3D--6b34b786bfb47187760b8b214de89548f10c823a",
+						"disabled": true
+					},
+					{
+						"key": "home_page_geo",
+						"value": "QA",
+						"disabled": true
+					},
+					{
+						"key": "priority",
+						"value": "u=1, i",
+						"disabled": true
+					},
+					{
+						"key": "referer",
+						"value": "https://crm.bill-01234-qa.sbinomo.com/users/300465/prepayments",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Not)A;Brand\";v=\"99\", \"Google Chrome\";v=\"127\", \"Chromium\";v=\"127\"",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"macOS\"",
+						"disabled": true
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty",
+						"disabled": true
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors",
+						"disabled": true
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-origin",
+						"disabled": true
+					},
+					{
 						"key": "user-agent",
-						"value": "{{user_agent}}"
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
 					},
 					{
-						"key": "Device-Id",
-						"value": "{{device_id}}",
-						"type": "text"
+						"key": "x-custom-geo",
+						"value": "QA",
+						"disabled": true
 					},
 					{
-						"key": "Device-Type",
-						"value": "{{device_type}}",
-						"type": "text"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+						"key": "x-xhr-referer",
+						"value": "https://crm.bill-01234-qa.sbinomo.com/users/300465/prepayments",
+						"disabled": true
 					}
 				],
-				"url": {
-					"raw": "https://bill-01234-qa.sbinomo.com/api/payments/cashier/test_card?amount=100000&card_number=4444444444444444&user_id=395979&locale=en",
-					"protocol": "https",
-					"host": [
-						"bill-01234-qa",
-						"sbinomo",
-						"com"
-					],
-					"path": [
-						"api",
-						"payments",
-						"cashier",
-						"test_card"
-					],
-					"query": [
-						{
-							"key": "amount",
-							"value": "100000"
-						},
-						{
-							"key": "card_number",
-							"value": "4444444444444444"
-						},
-						{
-							"key": "user_id",
-							"value": "395979"
-						},
-						{
-							"key": "locale",
-							"value": "en"
-						}
-					]
-				}
+				"url": "{{crm_url}}/orders/{{dep_transaction_id}}"
 			},
 			"response": []
 		}

@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "75ba9f2c-944e-468e-a836-fd2872e4b470",
 		"name": "Fast track",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
 		"_exporter_id": "18247996"
 	},
 	"item": [
@@ -43,23 +43,11 @@
 			"request": {
 				"auth": {
 					"type": "apikey",
-					"apikey": [
-						{
-							"key": "value",
-							"value": "{{auth_key}}",
-							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "Authorization-Token",
-							"type": "string"
-						},
-						{
-							"key": "in",
-							"value": "header",
-							"type": "string"
-						}
-					]
+					"apikey": {
+						"value": "{{auth_key}}",
+						"key": "Authorization-Token",
+						"in": "header"
+					}
 				},
 				"method": "POST",
 				"header": [
@@ -152,23 +140,11 @@
 			"request": {
 				"auth": {
 					"type": "apikey",
-					"apikey": [
-						{
-							"key": "value",
-							"value": "{{auth_key}}",
-							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "Authorization-Token",
-							"type": "string"
-						},
-						{
-							"key": "in",
-							"value": "header",
-							"type": "string"
-						}
-					]
+					"apikey": {
+						"value": "{{auth_key}}",
+						"key": "Authorization-Token",
+						"in": "header"
+					}
 				},
 				"method": "POST",
 				"header": [
@@ -376,16 +352,7 @@
 						"value": "https://crm.bill-01234-qa.sbinomo.com/orders?utf8=%E2%9C%93&query_type=purse&query=&date_field=created_at&date_from=&date_till=&type=withdraws&status=&system=&provider=&trader_status=&per_page=50&manager_id=&auto_process_banned=&manual_processing=true&hide_antifraud_inprogress=1"
 					}
 				],
-				"url": {
-					"raw": "{{crm_url}}/orders/{{transaction_id}}",
-					"host": [
-						"{{crm_url}}"
-					],
-					"path": [
-						"orders",
-						"{{transaction_id}}"
-					]
-				}
+				"url": "{{crm_url}}/orders/{{transaction_id}}"
 			},
 			"response": []
 		},
@@ -413,23 +380,11 @@
 			"request": {
 				"auth": {
 					"type": "apikey",
-					"apikey": [
-						{
-							"key": "value",
-							"value": "{{auth_key_crm}}",
-							"type": "string"
-						},
-						{
-							"key": "in",
-							"value": "header",
-							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "Authorization-Token",
-							"type": "string"
-						}
-					]
+					"apikey": {
+						"value": "{{auth_key_crm}}",
+						"in": "header",
+						"key": "Authorization-Token"
+					}
 				},
 				"method": "GET",
 				"header": [

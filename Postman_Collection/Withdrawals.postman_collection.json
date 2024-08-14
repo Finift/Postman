@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "2fef9650-86c5-40bf-9d1a-382b4522a19e",
 		"name": "Withdrawals",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
 		"_exporter_id": "18247996"
 	},
 	"item": [
@@ -42,23 +42,11 @@
 			"request": {
 				"auth": {
 					"type": "apikey",
-					"apikey": [
-						{
-							"key": "value",
-							"value": "{{auth_key}}",
-							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "Authorization-Token",
-							"type": "string"
-						},
-						{
-							"key": "in",
-							"value": "header",
-							"type": "string"
-						}
-					]
+					"apikey": {
+						"value": "{{auth_key}}",
+						"key": "Authorization-Token",
+						"in": "header"
+					}
 				},
 				"method": "POST",
 				"header": [
@@ -153,23 +141,11 @@
 			"request": {
 				"auth": {
 					"type": "apikey",
-					"apikey": [
-						{
-							"key": "value",
-							"value": "{{auth_key}}",
-							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "Authorization-Token",
-							"type": "string"
-						},
-						{
-							"key": "in",
-							"value": "header",
-							"type": "string"
-						}
-					]
+					"apikey": {
+						"value": "{{auth_key}}",
+						"key": "Authorization-Token",
+						"in": "header"
+					}
 				},
 				"method": "POST",
 				"header": [
@@ -208,17 +184,7 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "{{BASE_URL}}/platform/private/payouts",
-					"host": [
-						"{{BASE_URL}}"
-					],
-					"path": [
-						"platform",
-						"private",
-						"payouts"
-					]
-				}
+				"url": "{{BASE_URL}}/platform/private/payouts"
 			},
 			"response": []
 		},
@@ -263,23 +229,11 @@
 			"request": {
 				"auth": {
 					"type": "apikey",
-					"apikey": [
-						{
-							"key": "value",
-							"value": "{{auth_key}}",
-							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "Authorization-Token",
-							"type": "string"
-						},
-						{
-							"key": "in",
-							"value": "header",
-							"type": "string"
-						}
-					]
+					"apikey": {
+						"value": "{{auth_key}}",
+						"key": "Authorization-Token",
+						"in": "header"
+					}
 				},
 				"method": "GET",
 				"header": [
@@ -373,23 +327,11 @@
 			"request": {
 				"auth": {
 					"type": "apikey",
-					"apikey": [
-						{
-							"key": "value",
-							"value": "{{auth_key}}",
-							"type": "string"
-						},
-						{
-							"key": "in",
-							"value": "header",
-							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "Authorization-Token",
-							"type": "string"
-						}
-					]
+					"apikey": {
+						"value": "{{auth_key}}",
+						"in": "header",
+						"key": "Authorization-Token"
+					}
 				},
 				"method": "GET",
 				"header": [
@@ -414,18 +356,7 @@
 						"type": "text"
 					}
 				],
-				"url": {
-					"raw": "{{BASE_URL}}/platform/private/payouts/purses",
-					"host": [
-						"{{BASE_URL}}"
-					],
-					"path": [
-						"platform",
-						"private",
-						"payouts",
-						"purses"
-					]
-				}
+				"url": "{{BASE_URL}}/platform/private/payouts/purses"
 			},
 			"response": []
 		},
@@ -457,15 +388,7 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "{{crm_url}}/login",
-					"host": [
-						"{{crm_url}}"
-					],
-					"path": [
-						"login"
-					]
-				}
+				"url": "{{crm_url}}/login"
 			},
 			"response": []
 		},
@@ -535,23 +458,11 @@
 			"request": {
 				"auth": {
 					"type": "apikey",
-					"apikey": [
-						{
-							"key": "value",
-							"value": "{{auth_key_crm}}",
-							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "crm_authz_token",
-							"type": "string"
-						},
-						{
-							"key": "in",
-							"value": "header",
-							"type": "string"
-						}
-					]
+					"apikey": {
+						"value": "{{auth_key_crm}}",
+						"key": "crm_authz_token",
+						"in": "header"
+					}
 				},
 				"method": "POST",
 				"header": [
@@ -605,16 +516,7 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "{{crm_url}}/orders/{{transaction_id}}",
-					"host": [
-						"{{crm_url}}"
-					],
-					"path": [
-						"orders",
-						"{{transaction_id}}"
-					]
-				}
+				"url": "{{crm_url}}/orders/{{transaction_id}}"
 			},
 			"response": []
 		},
@@ -654,23 +556,11 @@
 			"request": {
 				"auth": {
 					"type": "apikey",
-					"apikey": [
-						{
-							"key": "value",
-							"value": "{{auth_key_crm}}",
-							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "crm_authz_token",
-							"type": "string"
-						},
-						{
-							"key": "in",
-							"value": "header",
-							"type": "string"
-						}
-					]
+					"apikey": {
+						"value": "{{auth_key_crm}}",
+						"key": "crm_authz_token",
+						"in": "header"
+					}
 				},
 				"method": "POST",
 				"header": [
@@ -724,16 +614,7 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "{{crm_url}}/orders/{{transaction_id}}",
-					"host": [
-						"{{crm_url}}"
-					],
-					"path": [
-						"orders",
-						"{{transaction_id}}"
-					]
-				}
+				"url": "{{crm_url}}/orders/{{transaction_id}}"
 			},
 			"response": []
 		},
@@ -772,23 +653,11 @@
 			"request": {
 				"auth": {
 					"type": "apikey",
-					"apikey": [
-						{
-							"key": "value",
-							"value": "{{auth_key_crm}}",
-							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "crm_authz_token",
-							"type": "string"
-						},
-						{
-							"key": "in",
-							"value": "header",
-							"type": "string"
-						}
-					]
+					"apikey": {
+						"value": "{{auth_key_crm}}",
+						"key": "crm_authz_token",
+						"in": "header"
+					}
 				},
 				"method": "GET",
 				"header": [
@@ -847,16 +716,7 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "{{crm_url}}/orders/{{transaction_id}}",
-					"host": [
-						"{{crm_url}}"
-					],
-					"path": [
-						"orders",
-						"{{transaction_id}}"
-					]
-				}
+				"url": "{{crm_url}}/orders/{{transaction_id}}"
 			},
 			"response": []
 		},
@@ -887,23 +747,11 @@
 			"request": {
 				"auth": {
 					"type": "apikey",
-					"apikey": [
-						{
-							"key": "in",
-							"value": "header",
-							"type": "string"
-						},
-						{
-							"key": "value",
-							"value": "{{auth_key_crm}}",
-							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "Authorization-Token",
-							"type": "string"
-						}
-					]
+					"apikey": {
+						"in": "header",
+						"value": "{{auth_key_crm}}",
+						"key": "Authorization-Token"
+					}
 				},
 				"method": "POST",
 				"header": [
@@ -924,16 +772,7 @@
 					"mode": "raw",
 					"raw": "utf8=%E2%9C%93&_method=patch&_action=reject&_delay=0&reason=limits&fraud_reason=&comment=&manual_provider=manual_pay&delayed_to="
 				},
-				"url": {
-					"raw": "{{crm_url}}/orders/{{transaction_id}}",
-					"host": [
-						"{{crm_url}}"
-					],
-					"path": [
-						"orders",
-						"{{transaction_id}}"
-					]
-				}
+				"url": "{{crm_url}}/orders/{{transaction_id}}"
 			},
 			"response": []
 		},
@@ -975,23 +814,11 @@
 			"request": {
 				"auth": {
 					"type": "apikey",
-					"apikey": [
-						{
-							"key": "value",
-							"value": "{{auth_key}}",
-							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "Authorization-Token",
-							"type": "string"
-						},
-						{
-							"key": "in",
-							"value": "header",
-							"type": "string"
-						}
-					]
+					"apikey": {
+						"value": "{{auth_key}}",
+						"key": "Authorization-Token",
+						"in": "header"
+					}
 				},
 				"method": "GET",
 				"header": [
@@ -1030,18 +857,7 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "{{BASE_URL}}/platform/private/transactions/{{transaction_id}}",
-					"host": [
-						"{{BASE_URL}}"
-					],
-					"path": [
-						"platform",
-						"private",
-						"transactions",
-						"{{transaction_id}}"
-					]
-				}
+				"url": "{{BASE_URL}}/platform/private/transactions/{{transaction_id}}"
 			},
 			"response": []
 		},
@@ -1068,23 +884,11 @@
 			"request": {
 				"auth": {
 					"type": "apikey",
-					"apikey": [
-						{
-							"key": "value",
-							"value": "{{auth_key}}",
-							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "Authorization-Token",
-							"type": "string"
-						},
-						{
-							"key": "in",
-							"value": "header",
-							"type": "string"
-						}
-					]
+					"apikey": {
+						"value": "{{auth_key}}",
+						"key": "Authorization-Token",
+						"in": "header"
+					}
 				},
 				"method": "POST",
 				"header": [
@@ -1160,23 +964,11 @@
 			"request": {
 				"auth": {
 					"type": "apikey",
-					"apikey": [
-						{
-							"key": "value",
-							"value": "{{auth_key}}",
-							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "Authorization-Token",
-							"type": "string"
-						},
-						{
-							"key": "in",
-							"value": "header",
-							"type": "string"
-						}
-					]
+					"apikey": {
+						"value": "{{auth_key}}",
+						"key": "Authorization-Token",
+						"in": "header"
+					}
 				},
 				"method": "POST",
 				"header": [
@@ -1266,23 +1058,11 @@
 			"request": {
 				"auth": {
 					"type": "apikey",
-					"apikey": [
-						{
-							"key": "value",
-							"value": "{{auth_key}}",
-							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "Authorization-Token",
-							"type": "string"
-						},
-						{
-							"key": "in",
-							"value": "header",
-							"type": "string"
-						}
-					]
+					"apikey": {
+						"value": "{{auth_key}}",
+						"key": "Authorization-Token",
+						"in": "header"
+					}
 				},
 				"method": "POST",
 				"header": [
@@ -1321,17 +1101,7 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "{{BASE_URL}}/platform/private/payments",
-					"host": [
-						"{{BASE_URL}}"
-					],
-					"path": [
-						"platform",
-						"private",
-						"payments"
-					]
-				}
+				"url": "{{BASE_URL}}/platform/private/payments"
 			},
 			"response": []
 		},
@@ -1346,23 +1116,11 @@
 			"request": {
 				"auth": {
 					"type": "apikey",
-					"apikey": [
-						{
-							"key": "value",
-							"value": "{{auth_key}}",
-							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "Authorization-Token",
-							"type": "string"
-						},
-						{
-							"key": "in",
-							"value": "header",
-							"type": "string"
-						}
-					]
+					"apikey": {
+						"value": "{{auth_key}}",
+						"key": "Authorization-Token",
+						"in": "header"
+					}
 				},
 				"method": "GET",
 				"header": [
@@ -1418,23 +1176,11 @@
 			"request": {
 				"auth": {
 					"type": "apikey",
-					"apikey": [
-						{
-							"key": "value",
-							"value": "{{auth_key}}",
-							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "Authorization-Token",
-							"type": "string"
-						},
-						{
-							"key": "in",
-							"value": "header",
-							"type": "string"
-						}
-					]
+					"apikey": {
+						"value": "{{auth_key}}",
+						"key": "Authorization-Token",
+						"in": "header"
+					}
 				},
 				"method": "POST",
 				"header": [
@@ -1499,23 +1245,11 @@
 			"request": {
 				"auth": {
 					"type": "apikey",
-					"apikey": [
-						{
-							"key": "value",
-							"value": "{{auth_key}}",
-							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "Authorization-Token",
-							"type": "string"
-						},
-						{
-							"key": "in",
-							"value": "header",
-							"type": "string"
-						}
-					]
+					"apikey": {
+						"value": "{{auth_key}}",
+						"key": "Authorization-Token",
+						"in": "header"
+					}
 				},
 				"method": "POST",
 				"header": [
@@ -1578,23 +1312,11 @@
 			"request": {
 				"auth": {
 					"type": "apikey",
-					"apikey": [
-						{
-							"key": "key",
-							"value": "crm_authz_token",
-							"type": "string"
-						},
-						{
-							"key": "value",
-							"value": "{{auth_key_crm}}",
-							"type": "string"
-						},
-						{
-							"key": "in",
-							"value": "header",
-							"type": "string"
-						}
-					]
+					"apikey": {
+						"key": "crm_authz_token",
+						"value": "{{auth_key_crm}}",
+						"in": "header"
+					}
 				},
 				"method": "POST",
 				"header": [
@@ -1630,17 +1352,7 @@
 					"mode": "raw",
 					"raw": "utf8=%E2%9C%93&user_blocking_setting%5Btrading%5D=0&user_blocking_setting%5Bsupport%5D=0&user_blocking_setting%5Bdeposit%5D=0&user_blocking_setting%5Bdeposit%5D=0&user_blocking_setting%5Bwithdraw%5D=1&commit=Create+User+blocking+setting"
 				},
-				"url": {
-					"raw": "{{crm_url}}/users/{{userId}}/blocking_settings",
-					"host": [
-						"{{crm_url}}"
-					],
-					"path": [
-						"users",
-						"{{userId}}",
-						"blocking_settings"
-					]
-				}
+				"url": "{{crm_url}}/users/{{userId}}/blocking_settings"
 			},
 			"response": []
 		},
@@ -1655,23 +1367,11 @@
 			"request": {
 				"auth": {
 					"type": "apikey",
-					"apikey": [
-						{
-							"key": "value",
-							"value": "{{auth_key}}",
-							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "Authorization-Token",
-							"type": "string"
-						},
-						{
-							"key": "in",
-							"value": "header",
-							"type": "string"
-						}
-					]
+					"apikey": {
+						"value": "{{auth_key}}",
+						"key": "Authorization-Token",
+						"in": "header"
+					}
 				},
 				"method": "DELETE",
 				"header": [

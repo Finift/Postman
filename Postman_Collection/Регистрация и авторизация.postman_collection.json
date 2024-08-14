@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "94acf65f-f083-4b9b-b1d1-d00a6091a3de",
 		"name": "Регистрация и авторизация",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
 		"_exporter_id": "18247996"
 	},
 	"item": [
@@ -13,7 +13,7 @@
 					"listen": "prerequest",
 					"script": {
 						"exec": [
-							"postman.setEnvironmentVariable(\"email\", \"sobaka01@gmail.com\");"
+							"postman.setEnvironmentVariable(\"email\", \"vans-vans@gmail.com\");"
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -134,17 +134,7 @@
 						"value": "127.0.0.1,215.123.0.10"
 					}
 				],
-				"url": {
-					"raw": "{{BASE_URL}}/traffic-tracker/v1/track",
-					"host": [
-						"{{BASE_URL}}"
-					],
-					"path": [
-						"traffic-tracker",
-						"v1",
-						"track"
-					]
-				}
+				"url": "{{BASE_URL}}/traffic-tracker/v1/track"
 			},
 			"response": []
 		},
@@ -160,23 +150,11 @@
 			"request": {
 				"auth": {
 					"type": "apikey",
-					"apikey": [
-						{
-							"key": "value",
-							"value": "{{auth_key_crm}}",
-							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "Authorization-Token",
-							"type": "string"
-						},
-						{
-							"key": "in",
-							"value": "header",
-							"type": "string"
-						}
-					]
+					"apikey": {
+						"value": "{{auth_key_crm}}",
+						"key": "Authorization-Token",
+						"in": "header"
+					}
 				},
 				"method": "POST",
 				"header": [
@@ -272,19 +250,7 @@
 					"mode": "raw",
 					"raw": "{}"
 				},
-				"url": {
-					"raw": "{{bin_admin_url}}/user-verification/v1/traders/{{userId}}/documents",
-					"host": [
-						"{{bin_admin_url}}"
-					],
-					"path": [
-						"user-verification",
-						"v1",
-						"traders",
-						"{{userId}}",
-						"documents"
-					]
-				}
+				"url": "{{bin_admin_url}}/user-verification/v1/traders/{{userId}}/documents"
 			},
 			"response": []
 		},
@@ -299,23 +265,11 @@
 			"request": {
 				"auth": {
 					"type": "apikey",
-					"apikey": [
-						{
-							"key": "value",
-							"value": "{{auth_key_crm}}",
-							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "Authorization-Token",
-							"type": "string"
-						},
-						{
-							"key": "in",
-							"value": "header",
-							"type": "string"
-						}
-					]
+					"apikey": {
+						"value": "{{auth_key_crm}}",
+						"key": "Authorization-Token",
+						"in": "header"
+					}
 				},
 				"method": "PATCH",
 				"header": [
@@ -343,19 +297,7 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "{{bin_admin_url}}/user-verification/v1/traders/{{userId}}/documents",
-					"host": [
-						"{{bin_admin_url}}"
-					],
-					"path": [
-						"user-verification",
-						"v1",
-						"traders",
-						"{{userId}}",
-						"documents"
-					]
-				}
+				"url": "{{bin_admin_url}}/user-verification/v1/traders/{{userId}}/documents"
 			},
 			"response": []
 		},
@@ -411,17 +353,7 @@
 					"mode": "raw",
 					"raw": "{\n  \"email\": \"{{email_crm}}\",\n  \"password\": \"{{password_crm}}\"\n}"
 				},
-				"url": {
-					"raw": "{{crm_url}}/api/v1/sign_in",
-					"host": [
-						"{{crm_url}}"
-					],
-					"path": [
-						"api",
-						"v1",
-						"sign_in"
-					]
-				}
+				"url": "{{crm_url}}/api/v1/sign_in"
 			},
 			"response": []
 		},

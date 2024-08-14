@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "7279ce77-e98a-41dc-9697-b7cb812a5846",
 		"name": "Прочее",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
 		"_exporter_id": "18247996"
 	},
 	"item": [
@@ -34,13 +34,9 @@
 			"request": {
 				"auth": {
 					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzZXJ2aWNlX25hbWUiOiJ3aXRoZHJhd2FsX3ZlcmlmaWNhdGlvbiJ9.6apTAp854FTjxPtFoon39NgHC0C-AKXwpZq-MbX0-oY",
-							"type": "string"
-						}
-					]
+					"bearer": {
+						"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzZXJ2aWNlX25hbWUiOiJ3aXRoZHJhd2FsX3ZlcmlmaWNhdGlvbiJ9.6apTAp854FTjxPtFoon39NgHC0C-AKXwpZq-MbX0-oY"
+					}
 				},
 				"method": "GET",
 				"header": [
@@ -74,24 +70,7 @@
 					"mode": "raw",
 					"raw": ""
 				},
-				"url": {
-					"raw": "https://crm.bill-01234-qa.sbinomo.com/api/internal/v1/cashier/projects/binomo",
-					"protocol": "https",
-					"host": [
-						"crm",
-						"bill-01234-qa",
-						"sbinomo",
-						"com"
-					],
-					"path": [
-						"api",
-						"internal",
-						"v1",
-						"cashier",
-						"projects",
-						"binomo"
-					]
-				}
+				"url": "https://crm.bill-01234-qa.sbinomo.com/api/internal/v1/cashier/projects/binomo"
 			},
 			"response": []
 		},
@@ -119,23 +98,11 @@
 			"request": {
 				"auth": {
 					"type": "apikey",
-					"apikey": [
-						{
-							"key": "value",
-							"value": "{{auth_key}}",
-							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "Authorization-Token",
-							"type": "string"
-						},
-						{
-							"key": "in",
-							"value": "header",
-							"type": "string"
-						}
-					]
+					"apikey": {
+						"value": "{{auth_key}}",
+						"key": "Authorization-Token",
+						"in": "header"
+					}
 				},
 				"method": "POST",
 				"header": [
@@ -225,23 +192,11 @@
 			"request": {
 				"auth": {
 					"type": "apikey",
-					"apikey": [
-						{
-							"key": "value",
-							"value": "65b5520d8108e32b65c3fbaf441cfec32c1f3f379d80a01098993d7122ffaef4",
-							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "Authorization",
-							"type": "string"
-						},
-						{
-							"key": "in",
-							"value": "header",
-							"type": "string"
-						}
-					]
+					"apikey": {
+						"value": "65b5520d8108e32b65c3fbaf441cfec32c1f3f379d80a01098993d7122ffaef4",
+						"key": "Authorization",
+						"in": "header"
+					}
 				},
 				"method": "POST",
 				"header": [
@@ -291,41 +246,12 @@
 					"mode": "raw",
 					"raw": "{\n    \"token\":\"{{auth_key_crm}}\",\n    \"trader_id\": {{userId}},\n    \"device_type\":\"web\",\n    \"device_id\":\"{{device_id}}\",\n    \"ip\":\"127.0.0.1\",\n    \"http_user_agent\":\"web\"\n}"
 				},
-				"url": {
-					"raw": "https://api.bill-01234-qa.sbinomo.com:443/payment-gateway/secure/billing/initialize_payment",
-					"protocol": "https",
-					"host": [
-						"api",
-						"bill-01234-qa",
-						"sbinomo",
-						"com"
-					],
-					"port": "443",
-					"path": [
-						"payment-gateway",
-						"secure",
-						"billing",
-						"initialize_payment"
-					]
-				}
+				"url": "https://api.bill-01234-qa.sbinomo.com:443/payment-gateway/secure/billing/initialize_payment"
 			},
 			"response": []
 		},
 		{
-			"name": "Выгрузить все payment_groups и все payment_systems из crm",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
+			"name": "Выгрузить транзакции 1v1",
 			"protocolProfileBehavior": {
 				"disabledSystemHeaders": {
 					"user-agent": true,
@@ -333,39 +259,121 @@
 				}
 			},
 			"request": {
-				"auth": {
-					"type": "apikey",
-					"apikey": [
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "userId",
+						"value": "{{userId}}",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Device-Id",
+						"value": "{{device_id}}",
+						"type": "text"
+					},
+					{
+						"key": "Device-Type",
+						"value": "{{device_type}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json; charset=utf-8",
+						"type": "text"
+					},
+					{
+						"key": "User-Agent",
+						"value": "{{user_agent}}",
+						"type": "text"
+					},
+					{
+						"key": "authorization-token",
+						"value": "{{auth_key}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{BASE_URL}}/platform/private/transactions?locale=en&date_from=2024-06-20&date_to=2024-07-01&per=10&type=duel",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"platform",
+						"private",
+						"transactions"
+					],
+					"query": [
 						{
-							"key": "value",
-							"value": "{{auth_key_crm}}",
-							"type": "string"
+							"key": "locale",
+							"value": "en"
 						},
 						{
-							"key": "in",
-							"value": "header",
-							"type": "string"
+							"key": "date_from",
+							"value": "2024-06-20"
 						},
 						{
-							"key": "key",
-							"value": "Authorization-Token",
-							"type": "string"
+							"key": "date_to",
+							"value": "2024-07-01"
+						},
+						{
+							"key": "page",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "per",
+							"value": "10"
+						},
+						{
+							"key": "type",
+							"value": "duel"
 						}
 					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Запрос баланса",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept": true,
+					"accept-encoding": true,
+					"connection": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": {
+						"key": "Authorization-token",
+						"value": "{{auth_key}}",
+						"in": "header"
+					}
 				},
 				"method": "GET",
 				"header": [
 					{
 						"key": "accept",
-						"value": "text/html, application/xhtml+xml, application/xml"
+						"value": "application/json, text/plain, */*"
 					},
 					{
-						"key": "cache-control",
-						"value": "no-cache"
+						"key": "content-type",
+						"value": "application/json"
 					},
 					{
-						"key": "cookie",
-						"value": "_gcl_au=1.1.1193279494.1707403082; _fbp=fb.1.1707403082870.1421453797; _hjSessionUser_3112257=eyJpZCI6IjA1YjgzN2FlLTQwOTItNTEzZS04ZjJlLWY3ZTE0N2QyOGEyYyIsImNyZWF0ZWQiOjE3MDg0Mjc3ODI5MzcsImV4aXN0aW5nIjp0cnVlfQ==; crm_authz_token=eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlX25hbWUiOiJhZG1pbiIsInZhbGlkX3RvIjoxNzE2MjkwNzAzfQ.5IRzdNdCbrOQibB7JmAJA2pFE9VWpxsF2mnFaW844TQ; _hjSessionUser_3112323=eyJpZCI6ImZiYTk3NDgxLTVlMzYtNWM2Zi1iNzg0LWZkNjk3Y2FmZTIxZSIsImNyZWF0ZWQiOjE3MDg1OTI4MDY5MjksImV4aXN0aW5nIjp0cnVlfQ==; cto_bundle=y8bNI180U0twVXVsWTlWOFl2R1VQZFpwMCUyRlQzSTc3R2s1RkdhVE5wNmluTVglMkZiZlFEQ2UwYldqZEVSNDdWYmlwZXd5bHJvJTJGYWZlR1hHSDJBY0pFM0lBWDlvbExsTUVkZ1NlNGhtQ0s4emRLOFdDVkV6U0NVSE9CTHBOaFVmJTJGeWUxS2NzNWxJUVpuRnBaQjklMkJTY1RxS3AlMkZ3dmZiaFZlWkFLJTJGQ3R6SDBDajM0QmZJJTJCdTlrWWpOcm5GdHFkYkZJUVNWM3pXMjBET0JraTVkdWVPN29MTE5ZMUp1QSUzRCUzRA; _gid=GA1.2.556547727.1708930619; _ga_EYQ8E8SVJX=GS1.1.1708944537.19.1.1708945102.0.0.0; __exponea_etc__=57bfd089-1892-43fd-b224-04f100238b62; authtoken=dc9bdcae-0192-4428-9b26-4add892ba263; device_type=web; device_id=9da2615fbb2fe6e5e404cb066158f30b; _ga_6TNVMCB3BC=GS1.1.1708953469.43.1.1708956221.54.0.0; _ga=GA1.1.324710283.1707403083; _crm_binomo_com_session=dzRNai9ENURBTzhBdFh6MVNuaE5aKzlqUWtxN2ZnWUNKYjdDeGNTSmlxTkx5ellZWWVocDZtQlZDNDE2elJFVXdPcE1jNlhGK3VJdnN0VFJqdlN2cUh3SUJ1UnZSTFc1a1lHSWRXaGR6KzI0NHpzbVllNGNrTCtIYWhJUHF5dWtvT21JcHJzLzhKbEJpSElCSWZqKzlnOTZVUjNzTWh5M0Jud2VUR041WTVGaUIveWhqK1Zic01EOGRrVE54OVpmLS1wV1F3dGZ6NkUzdkRmck1mcnY0WWdRPT0%3D--120175de0615733c097fa6e6fb88a97cb17c7cb3"
+						"key": "device-id",
+						"value": "{{device_id}}"
+					},
+					{
+						"key": "device-type",
+						"value": "{{device_type}}"
 					},
 					{
 						"key": "user-agent",
@@ -373,22 +381,92 @@
 					}
 				],
 				"url": {
-					"raw": "{{crm_url}}/payment_groups",
+					"raw": "{{BASE_URL}}/bank/v1/read?locale=en",
 					"host": [
-						"{{crm_url}}"
+						"{{BASE_URL}}"
 					],
 					"path": [
-						"payment_groups"
+						"bank",
+						"v1",
+						"read"
+					],
+					"query": [
+						{
+							"key": "locale",
+							"value": "en"
+						}
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "New Request",
+			"name": "смена статуса юзера, требует логина в CRM",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true,
+					"user-agent": true,
+					"content-type": true
+				}
+			},
 			"request": {
-				"method": "GET",
-				"header": []
+				"auth": {
+					"type": "apikey",
+					"apikey": {
+						"value": "{{auth_key_crm}}",
+						"key": "Authorization-token",
+						"in": "header"
+					}
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7"
+					},
+					{
+						"key": "accept-language",
+						"value": "ru,en;q=0.9,hi;q=0.8"
+					},
+					{
+						"key": "content-type",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "upgrade-insecure-requests",
+						"value": "1"
+					},
+					{
+						"key": "user-agent",
+						"value": "{{user_agent}}"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "utf8",
+							"value": "✓",
+							"type": "text"
+						},
+						{
+							"key": "_method",
+							"value": "patch",
+							"type": "text"
+						},
+						{
+							"key": "user[new_status_id]",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "commit",
+							"value": "Update",
+							"type": "text"
+						}
+					]
+				},
+				"url": "{{crm_url}}/users/{{userId}}/testing_purposes"
 			},
 			"response": []
 		}

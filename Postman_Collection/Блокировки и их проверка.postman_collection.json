@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "48bb5611-58ac-4c4e-8c3c-b7370dbce8b8",
 		"name": "Блокировки и их проверка",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
 		"_exporter_id": "18247996"
 	},
 	"item": [
@@ -24,13 +24,9 @@
 			"request": {
 				"auth": {
 					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzZXJ2aWNlX25hbWUiOiJ3aXRoZHJhd2FsX3ZlcmlmaWNhdGlvbiJ9.6apTAp854FTjxPtFoon39NgHC0C-AKXwpZq-MbX0-oY",
-							"type": "string"
-						}
-					]
+					"bearer": {
+						"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzZXJ2aWNlX25hbWUiOiJ3aXRoZHJhd2FsX3ZlcmlmaWNhdGlvbiJ9.6apTAp854FTjxPtFoon39NgHC0C-AKXwpZq-MbX0-oY"
+					}
 				},
 				"method": "PUT",
 				"header": [],
@@ -79,13 +75,9 @@
 			"request": {
 				"auth": {
 					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzZXJ2aWNlX25hbWUiOiJ3aXRoZHJhd2FsX3ZlcmlmaWNhdGlvbiJ9.6apTAp854FTjxPtFoon39NgHC0C-AKXwpZq-MbX0-oY",
-							"type": "string"
-						}
-					]
+					"bearer": {
+						"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzZXJ2aWNlX25hbWUiOiJ3aXRoZHJhd2FsX3ZlcmlmaWNhdGlvbiJ9.6apTAp854FTjxPtFoon39NgHC0C-AKXwpZq-MbX0-oY"
+					}
 				},
 				"method": "GET",
 				"header": [
@@ -95,18 +87,7 @@
 						"type": "text"
 					}
 				],
-				"url": {
-					"raw": "{{crm_url}}/internal/v1/blocking_settings/countries",
-					"host": [
-						"{{crm_url}}"
-					],
-					"path": [
-						"internal",
-						"v1",
-						"blocking_settings",
-						"countries"
-					]
-				}
+				"url": "{{crm_url}}/internal/v1/blocking_settings/countries"
 			},
 			"response": []
 		},
@@ -128,13 +109,9 @@
 			"request": {
 				"auth": {
 					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzZXJ2aWNlX25hbWUiOiJ3aXRoZHJhd2FsX3ZlcmlmaWNhdGlvbiJ9.6apTAp854FTjxPtFoon39NgHC0C-AKXwpZq-MbX0-oY",
-							"type": "string"
-						}
-					]
+					"bearer": {
+						"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzZXJ2aWNlX25hbWUiOiJ3aXRoZHJhd2FsX3ZlcmlmaWNhdGlvbiJ9.6apTAp854FTjxPtFoon39NgHC0C-AKXwpZq-MbX0-oY"
+					}
 				},
 				"method": "PUT",
 				"header": [],
